@@ -1,0 +1,15 @@
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.auth-form input{
+    width: 320px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    outline: none;
+}
+.auth-form button{
+    margin-bottom: 1.4rem;
+}

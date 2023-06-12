@@ -1,9 +1,11 @@
 import React from "react"
+import Login from "./pages/Auth/Login";
+import NavRoutes from "./routes/NavRoutes";
 
 function App() {
   return (
     <div className="App">
-   <h1>Bhavana</h1>
+    <NavRoutes />
     </div>
   );
 }
