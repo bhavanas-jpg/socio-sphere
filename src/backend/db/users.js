@@ -268,7 +268,7 @@ export const users = [
 
     ],
     bookmarks: [],
-    bio: "Web Designer",
+    bio: "Social Worker",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /*******6th user **************/
