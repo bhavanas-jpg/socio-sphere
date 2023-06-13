@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import "./auth.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { handleLogin } from './authSlice';
 
 const Login = () => {
   const [formValues, setFormValues] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const testLogin = {
     username: "bhavana",
@@ -22,6 +23,7 @@ const Login = () => {
             username: formValues.username,
             password: formValues.password
           }))
+          navigate("/")
         }
         }
         className='auth-form'>
