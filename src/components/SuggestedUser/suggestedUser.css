@@ -1,0 +1,33 @@
+.right .users {
+    height: max-content;
+    position: sticky;
+    top: var(--sticky-top-right);
+    bottom: 0;
+}
+
+.right .users{
+    margin-top: 1rem;
+}
+.right .users h3{
+    color: var(--color-gray);
+    margin: 1rem 0;
+}
+.right .users-container{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-bottom: 0.7rem;
+}
+.right .info{
+    /* display: flex;
+    justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 0.7rem;
+    cursor: pointer;
+}
+.right .info .profile-info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+}

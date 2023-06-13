@@ -42,6 +42,7 @@ const authSlice = createSlice({
     initialState,
     reducer: {
         handleLogout: (state) => {
+             console.log(state)
             localStorage.removeItem(AUTHKEY);
             state.user = null;
             state.token = null;
@@ -83,17 +84,9 @@ const authSlice = createSlice({
         builder.addCase(handleSignup.rejected, (state,action)=>{
             state.isLoading = false;
         })
-
-
-
-
-
-
-
-
-
     }
 
 })
 
+export const {handleLogout} = authSlice.actions;
 export const authReducer = authSlice.reducer;
