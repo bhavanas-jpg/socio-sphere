@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { handleGetAllUsers } from '../../pages/Home/usersSlice';
+import { handleGetAllUsers, userProfile } from '../../pages/Home/usersSlice';
 import "./suggestedUser.css"
 import { useNavigate } from 'react-router-dom';
+
 
 const SuggestedUser = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,10 @@ const SuggestedUser = () => {
 
           {
             suggestedusers.map(user => (
-              <div className="info" onClick={()=>navigate("/profile")}>
+              <div className="info" onClick={()=>{
+                navigate("/profile")
+                dispatch(userProfile(user?.username))
+                }}>
                 <div className="profile-info">
                   <div className="profile-picture">
                     <img src={user?.avatarURL} alt="" />

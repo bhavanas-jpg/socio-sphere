@@ -1,11 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./navbar.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '../../pages/Auth/authSlice';
+import { userProfile } from '../../pages/Home/usersSlice';
 
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user, token } = useSelector(store => store.auth);
 
@@ -23,11 +25,16 @@ const Navbar = () => {
                     <li className="menu-item ">
                         <NavLink to="/bookmark" className="menu-title"><i class="uil uil-bookmark"></i>BookMarks</NavLink>
                     </li>
-                    <li className="menu-item ">
+                    <li className="menu-item"
+                    onClick={()=>dispatch(userProfile(user?.username))}
+                    >
                         <NavLink to="/profile" className="menu-title"><i class="uil uil-user"></i>Profile</NavLink>
                     </li>
                     <li className="menu-item"
-                        onClick={() => dispatch(handleLogout())}
+                        onClick={() => {
+                            dispatch(handleLogout());
+                            navigate("/login")
+                        }}
                     >
                         <NavLink className="menu-title"><i class="uil uil-Logout"></i>Log out</NavLink>
                     </li>

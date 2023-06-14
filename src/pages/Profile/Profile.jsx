@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import "./profile.css"
 import { Link } from 'react-router-dom';
 
-const Profile = () => {
-  const {user} = useSelector(store => store.auth)
+const Profile = ({user}) => {
+  // const {user} = useSelector(store => store.auth)
+  console.log(user);
   return (
     <section class="profile">
      <div className="profile-picture">

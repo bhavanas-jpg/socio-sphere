@@ -2,6 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AUTHKEY } from "../../utils/constants";
 import { loginService, signupService } from "../../services/auth";
 
+
+
+
 const initialState = {
     user: JSON.parse(localStorage.getItem(AUTHKEY))?.user,
     token: JSON.parse(localStorage.getItem(AUTHKEY))?.token,
@@ -40,12 +43,12 @@ export const handleSignup = createAsyncThunk(
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducer: {
+    reducers: {
         handleLogout: (state) => {
-             console.log(state)
             localStorage.removeItem(AUTHKEY);
             state.user = null;
             state.token = null;
+
         }
     },
     extraReducers: (builder) => {
@@ -67,10 +70,10 @@ const authSlice = createSlice({
             state.isLoading = false;
         });
 
-        builder.addCase(handleSignup.pending, (state)=> {
-            state.isLoading = true; 
+        builder.addCase(handleSignup.pending, (state) => {
+            state.isLoading = true;
         })
-        builder.addCase(handleSignup.fulfilled, (state,action)=>{
+        builder.addCase(handleSignup.fulfilled, (state, action) => {
             state.user = action.payload.createdUser;
             state.token = action.payload.encodedToken;
             localStorage.setItem(
@@ -81,12 +84,12 @@ const authSlice = createSlice({
                 })
             )
         });
-        builder.addCase(handleSignup.rejected, (state,action)=>{
+        builder.addCase(handleSignup.rejected, (state, action) => {
             state.isLoading = false;
         })
     }
 
 })
 
-export const {handleLogout} = authSlice.actions;
+export const { handleLogout } = authSlice.actions;
 export const authReducer = authSlice.reducer;
