@@ -10,8 +10,9 @@ const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user, token } = useSelector(store => store.auth);
+   
 
-    console.log(user);
+   
     return (
         <section className="left">
             <aside className="sidebar">
@@ -36,7 +37,7 @@ const Navbar = () => {
                             navigate("/login")
                         }}
                     >
-                        <NavLink className="menu-title"><i class="uil uil-Logout"></i>Log out</NavLink>
+                        <NavLink className="menu-title"><i class="uil  uil-sign-out-alt"></i>Log out</NavLink>
                     </li>
                 </ul>
             </aside>

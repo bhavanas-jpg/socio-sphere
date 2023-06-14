@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 function App() {
   const {token} = useSelector(store =>store.auth);
 
-  console.log(token);
+
   return (
     <div className="App">
       {token && <Header />}

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
     const {user} = useSelector(store=>store.auth);
-     console.log(user);
+    
   return (
     <header>
         <nav>

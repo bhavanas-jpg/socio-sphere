@@ -11,15 +11,13 @@ const SuggestedUser = () => {
   const { allUsers } = useSelector(store => store.users);
   const navigate = useNavigate();
 
-  console.log(allUsers, "users");
-  console.log(user?._id, "user id");
 
   const suggestedusers = allUsers.filter(item =>
     user.username !== item.username && !user.following?.some(
       (otherUser) => otherUser.username === item.username
     )
   );
-  console.log(suggestedusers, "i can follow");
+
 
 
   useEffect(() => {
