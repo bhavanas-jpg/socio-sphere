@@ -1,10 +1,10 @@
 export const getTimeDifference =(postDate)=>{
 const datePosted = new Date(postDate);
-console.log(datePosted, "posted date");
+
 const timeNow = new Date();
-console.log(timeNow);
+
 const milliseconds = Math.floor(timeNow - datePosted);
-console.log(milliseconds);
+
 const seconds = Math.floor(milliseconds / 1000);
 
 if(seconds > 59){

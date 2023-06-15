@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AUTHKEY } from "../../utils/constants";
 import { loginService, signupService } from "../../services/auth";
+import { updateUser } from "../../services/users";
 
 
 
@@ -10,6 +11,7 @@ const initialState = {
     token: JSON.parse(localStorage.getItem(AUTHKEY))?.token,
     isLoading: false
 }
+
 
 export const handleLogin = createAsyncThunk(
     "auth/handleLogin",
@@ -32,6 +34,18 @@ export const handleSignup = createAsyncThunk(
         } catch (error) {
             console.error(error);
             return thunkAPI.rejectWithValue("Username or password is incorrect")
+        }
+    }
+)
+
+export const handleUserUpdate = createAsyncThunk(
+    "auth/handleUserUpdate",
+    async({userData, token}, thunkAPI) =>{  
+        try{
+            const response = await updateUser(userData, token);   
+            return response.data;           
+        }catch(error){
+            return thunkAPI.rejectWithValue("Unable to update user, try again!")
         }
     }
 )
@@ -82,7 +96,21 @@ const authSlice = createSlice({
         });
         builder.addCase(handleSignup.rejected, (state, action) => {
             state.isLoading = false;
-        })
+        });
+        builder.addCase(handleUserUpdate.pending, (state) =>{
+            state.isLoading = true;
+        });
+        builder.addCase(handleUserUpdate.fulfilled, (state,action)=>{
+            state.isLoading = false;
+            state.user = action.payload.user;
+            localStorage.setItem(
+                AUTHKEY,
+                JSON.stringify({user: action.payload.user,token:state.token })
+            )
+        });
+        builder.addCase(handleUserUpdate.rejected, (state)=>{
+            state.isLoading = false;
+        });
     }
 
 })

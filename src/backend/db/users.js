@@ -214,7 +214,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "MakeUp Artist",
+    bio: "Software Developer",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /*******5th user **************/
@@ -320,7 +320,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "Software Developer",
+    bio: "Food Blogger",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /*******7th user **************/

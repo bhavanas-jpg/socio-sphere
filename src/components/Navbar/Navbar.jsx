@@ -11,6 +11,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const { user, token } = useSelector(store => store.auth);
    
+   
 
    
     return (
@@ -27,7 +28,7 @@ const Navbar = () => {
                         <NavLink to="/bookmark" className="menu-title"><i class="uil uil-bookmark"></i>BookMarks</NavLink>
                     </li>
                     <li className="menu-item"
-                    onClick={()=>dispatch(userProfile(user?.username))}
+                    onClick={()=>  navigate(`/profile/${user?.username}`)}
                     >
                         <NavLink to="/profile" className="menu-title"><i class="uil uil-user"></i>Profile</NavLink>
                     </li>

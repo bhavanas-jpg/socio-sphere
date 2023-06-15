@@ -7,7 +7,7 @@ import { getTimeDifference } from '../../helpers/getTimeDifference';
 const Posts = ({ posts }) => {
   const dispatch = useDispatch();
 
-  console.log(posts, "explore posts");
+
 
   useEffect(() => {
     dispatch(handleGetAllPosts())
@@ -50,7 +50,7 @@ const Posts = ({ posts }) => {
               <div class="caption">
                     <p><b>{post?.firstName} {post?.lastName}</b>
                    {post?.content}
-                    <span class="hash-tag">{post?.hashtags}</span> 
+                    <p class="hash-tag">{post?.hashtags}</p> 
                     </p>
                 </div>
             </div>

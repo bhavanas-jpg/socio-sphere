@@ -11,8 +11,11 @@ import { useSelector } from 'react-redux';
 
 
 const NavRoutes = () => {
-  const {user} = useSelector(store => store.users);
+  // const {profileUser} = useSelector(store => store.users);
   const {allPosts} = useSelector(store =>store.posts);
+  const {user} = useSelector(store => store.auth)
+
+  console.log(user , "auth user");
 
   return (
     <Routes>
@@ -21,7 +24,7 @@ const NavRoutes = () => {
         <Route path="/signup" element={<SignUp />} />
         {/* <Route path="/explore" element={<Explore  />}/> */}
         <Route path="/bookmark" element={<BookMark />} />
-        <Route path="/profile" element={<Profile user={user}/>} />
+        <Route path="/profile/:username" element={<Profile />} />
         <Route path="/explore" element={<Posts posts={allPosts}/>} />
         
       

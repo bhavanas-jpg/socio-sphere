@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import "./profile.css"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Posts from '../../components/Posts/Posts';
 
-const Profile = ({user}) => {
- const {allPosts} = useSelector(store => store.posts)
+const Profile = () => {
+  const {username} = useParams();
+ const {allPosts} = useSelector(store => store.posts);
+ const userPosts = allPosts.filter((post)=> post.username === username);
+ const {allUsers} = useSelector(store => store.users);
+
+
+ console.log(username , "useParams");
+const user = allUsers.find((user)=> user.username === username);
+
+
   return (
     <>
     <div>
@@ -23,9 +32,8 @@ const Profile = ({user}) => {
       <span>{user?.following.length} Following</span>
       </p>     
      </div>
-    
     </section>
-     <Posts posts={allPosts}/>
+     <Posts posts={userPosts}/>
      </div>
      </>
   )
