@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { followUser, getAllUsers } from "../../services/users";
+import { followUser, getAllUsers, unfollowUser } from "../../services/users";
 import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 
@@ -24,14 +24,11 @@ export const handleGetAllUsers = createAsyncThunk(
 
 export const handleFollowUser = createAsyncThunk(
   "users/handleFollowUser",
-  async({followerId, token, dispatch, handleUserUpdate,userProfile}, thunkAPI)=>{
+  async({followerId, token, dispatch, handleUserUpdate}, thunkAPI)=>{
     try{
     const response = await followUser(followerId, token);
     dispatch(handleUserUpdate({userData:response.data.user, token}));
-    // dispatch(userProfile(response.data.user?.username))
-     console.log(response.data);
-    return response.data;
-   
+    return response.data;  
     }catch(error){
       console.error(error);
       return thunkAPI.rejectWithValue(error.response.data)
@@ -39,21 +36,26 @@ export const handleFollowUser = createAsyncThunk(
   }
 )
 
-
+export const handleUnfollowUser = createAsyncThunk(
+  "users/handleUnfollowUser",
+  async({followerId, token, dispatch, handleUserUpdate}, thunkAPI)=>{
+    try{
+    const response = await unfollowUser(followerId, token);
+    dispatch(handleUserUpdate({userData: response.data.user, token}))
+    }catch(error){
+      console.error(error);
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+)
 
 
 const userSlice = createSlice({
     name: "users",
     initialState,
     reducers:{
-        userProfile: (state,action)=>{
-         const profileUser = state.allUsers.find(user => user.username === action.payload);
-         return {
-            ...state,
-            profileUser: profileUser
-         }
         }
-    },
+    ,
     extraReducers: (builder)=>{
         builder.addCase(handleGetAllUsers.pending, (state) =>{
             state.isLoading = true;
@@ -74,6 +76,17 @@ const userSlice = createSlice({
       
         })
         builder.addCase(handleFollowUser.rejected, (state)=>{
+          state.isLoading = false;
+        })
+        builder.addCase(handleUnfollowUser.pending, (state)=>{
+          state.isLoading = true;
+        })
+        builder.addCase(handleUnfollowUser.fulfilled, (state,action)=>{
+          state.isLoading = false;
+          state.allUsers =action.payload.allUsers;
+      
+        })
+        builder.addCase(handleUnfollowUser.rejected, (state)=>{
           state.isLoading = false;
         })
         

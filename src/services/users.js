@@ -11,6 +11,13 @@ export const followUser = async(followUserId, token) =>{
     );
 };
 
+export const unfollowUser = async(followUserId, token)=>{
+    return await axios.post(`/api/users/unfollow/${followUserId}`,
+    {},
+    {headers: {authorization: token}}
+    )
+}
+
 export const updateUser = async(userData, token)=>{
    return await axios.post("/api/users/edit",
     {userData},
