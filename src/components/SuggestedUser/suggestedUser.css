@@ -19,8 +19,8 @@
     margin-bottom: 0.7rem;
 }
 .right .info{
-    /* display: flex;
-    justify-content: space-between; */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 0.7rem;
     cursor: pointer;

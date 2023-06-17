@@ -15,7 +15,7 @@ const NavRoutes = () => {
   const {allPosts} = useSelector(store =>store.posts);
   const {user} = useSelector(store => store.auth)
 
-  console.log(user , "auth user");
+
 
   return (
     <Routes>

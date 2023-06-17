@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SuggestedUser = () => {
   const dispatch = useDispatch();
-  const { user , token} = useSelector(store => store.auth);
+  const { user, token } = useSelector(store => store.auth);
   const { allUsers } = useSelector(store => store.users);
   const navigate = useNavigate();
 
@@ -25,46 +25,51 @@ const SuggestedUser = () => {
     dispatch(handleGetAllUsers())
   }, [dispatch])
 
+  console.log(suggestedusers.length);
+
   return (
     <section className="right">
-      <div className="users">
-        <h3>Who to Follow</h3>
-        <div className="users-container">
-
-          {
-            suggestedusers.map(user => (
-              <>
-              <div className="info" onClick={()=>{
-                navigate(`/profile/${user?.username}`)
-  
-                }}>
-                <div className="profile-info">
-                  <div className="profile-picture">
-                    <img src={user?.avatarURL} alt="" />
+      {
+        // suggestedusers.length === 0 ? " ": 
+        <div className="users">
+          <h3>Who to Follow</h3>
+          <div className="users-container">
+            {
+              suggestedusers.map(user => (
+                <>
+                  <div className="info">
+                    <div className="profile-info"
+                      onClick={() => {
+                        navigate(`/profile/${user?.username}`)
+                      }}>
+                      <div className="profile-picture">
+                        <img src={user?.avatarURL} alt="" />
+                      </div>
+                      <div>
+                        <h4>{user?.firstName} </h4>
+                      </div>
+                    </div>
+                    <div className="action">
+                      <button
+                        onClick={() => {
+                          dispatch(handleFollowUser({ followerId: user?._id, token, dispatch, handleUserUpdate, userProfile }))
+                        }
+                        }
+                        className="btn btn-primary">
+                        Follow
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <h4>{user?.firstName} </h4>
-                  </div>                 
-                </div>
-              </div>
-              <div className="action">
-              <button 
-              onClick={()=>
-                {
-                  dispatch(handleFollowUser({followerId:user?._id, token, dispatch, handleUserUpdate,userProfile}))
-                 
-                }
-              }
-              className="btn btn-primary">
-                Follow
-              </button>
-            </div>
-            </>
-            ))
 
-          }
+                </>
+              ))
+
+            }
+          </div>
         </div>
-      </div>
+
+      }
+
     </section>
   )
 }
