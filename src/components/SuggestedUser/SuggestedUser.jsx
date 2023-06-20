@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { handleFollowUser, handleGetAllUsers, userProfile } from '../../pages/Home/usersSlice';
+import { handleFollowUser, handleGetAllUsers } from '../../pages/Home/usersSlice';
 import { handleUserUpdate } from '../../pages/Auth/authSlice';
 import "./suggestedUser.css"
 import { useNavigate } from 'react-router-dom';
@@ -19,13 +19,10 @@ const SuggestedUser = () => {
     )
   );
 
-
-
   useEffect(() => {
     dispatch(handleGetAllUsers())
   }, [dispatch])
 
-  console.log(suggestedusers.length);
 
   return (
     <section className="right">
@@ -52,7 +49,7 @@ const SuggestedUser = () => {
                     <div className="action">
                       <button
                         onClick={() => {
-                          dispatch(handleFollowUser({ followerId: user?._id, token, dispatch, handleUserUpdate, userProfile }))
+                          dispatch(handleFollowUser({ followerId: user?._id, token, dispatch, handleUserUpdate }))
                         }
                         }
                         className="btn btn-primary">

@@ -41,7 +41,6 @@ export const handleAddtoBookmarks = createAsyncThunk(
     async({postId, token}, thunkAPI)=>{
         try{
         const response = await addBookmark(postId, token);
-        console.log(response.data.bookmarks);
        return response.data.bookmarks;
         }catch(error){
             return thunkAPI.rejectWithValue(error);

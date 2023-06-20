@@ -3,17 +3,16 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import "./navbar.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '../../pages/Auth/authSlice';
-import { userProfile } from '../../pages/Home/usersSlice';
+
 
 
 const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user, token } = useSelector(store => store.auth);
-   
-   
 
-   
+    console.log(user, "updated one");
+
     return (
         <section className="left">
             <aside className="sidebar">

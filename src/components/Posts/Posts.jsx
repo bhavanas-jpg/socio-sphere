@@ -43,7 +43,7 @@ const Posts = ({ posts }) => {
                 <div className="interaction-buttons">
                 <span>
                   {
-                    likedBy.find((likedUser)=> likedUser.username === user.username) ?              
+                    likedBy.find((likedUser)=> likedUser.username === user?.username) ?              
                     <svg
                     onClick={()=> dispatch(handleDislikes({postId:_id, token}))}
                     class="uil uil-heart active" width="1em" height="1em" viewBox="0 0 32 32">

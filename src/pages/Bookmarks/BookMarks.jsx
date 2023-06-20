@@ -11,7 +11,7 @@ const BookMark = () => {
   const {bookmarkPosts} = useSelector(store => store.posts);
 
 const bookmarkedPosts = allPosts.filter(({_id}) => bookmarkPosts.includes(_id))
-console.log(bookmarkedPosts , "bookmarked posts");
+
 
   useEffect(()=>{
     dispatch(handleGetAllBookmarks(token))

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import "./profile.css"
 import { Link, useParams } from 'react-router-dom';
 import Posts from '../../components/Posts/Posts';
-import { handleFollowUser, handleUnfollowUser, userProfile } from '../Home/usersSlice';
+import { editedUser, handleEditUser, handleFollowUser, handleUnfollowUser, userProfile } from '../Home/usersSlice';
 import { handleUserUpdate } from '../Auth/authSlice';
+import Modal from '../../components/Modal/Modal';
+import EditProfile from "../../components/Form/EditProfile"
 
 const Profile = () => {
+
+  const [showModal,setShowModal] = useState(false)
   const {username} = useParams();
   const dispatch = useDispatch();
   const {token} = useSelector(store => store.auth);
@@ -14,16 +18,17 @@ const Profile = () => {
  const {allUsers} = useSelector(store => store.users);
  const {user} = useSelector(store => store.auth);
  const currentUser = allUsers.find((user)=> user.username === username);
- const userPosts = allPosts.filter((post)=> post.username === username);
+ 
+ const userPosts = allPosts.filter((post)=> post.username === currentUser.username);
 
-
+console.log(currentUser);
 
   return (
     <>
     <div>
     <section class="profile">
      <div className="profile-picture">
-      <img src={currentUser?.avatarURL} alt="" />
+      <img src={currentUser?.avatarURL} alt={currentUser?.username} />
      </div>
      <div className="handle">
       <h4>{currentUser?.firstName}  {currentUser?.lastName}</h4>
@@ -35,7 +40,11 @@ const Profile = () => {
       <span>{currentUser?.following.length} Following</span>
       </p>  
       {user?.username === currentUser?.username ? 
-        <button>
+        <button
+        onClick={()=>{
+         setShowModal(true)
+        }}
+        >
         edit
         </button>
         :
@@ -54,7 +63,7 @@ const Profile = () => {
           className="btn btn-primary"
         >follow</button>)       
       }
-       
+      {showModal && <Modal modalBody={<EditProfile  currentUser={currentUser} setShowModal={setShowModal}/>} setShowModal={setShowModal}/>}
      </div>
     </section>
      <Posts posts={userPosts}/>
