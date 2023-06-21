@@ -56,3 +56,11 @@
 .bookmark{
     cursor: pointer;
 }
+.post__action--btns{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.post__action--btns button{
+    cursor: pointer;
+}

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { followUser, getAllUsers, unfollowUser, updateUser } from "../../services/users";
 import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
+import { updateUserPost } from "../../components/Posts/postsSlice";
 
 const initialState={
     allUsers: [],
@@ -54,8 +55,8 @@ export const handleEditUser = createAsyncThunk(
   async({userData,token}, thunkAPI)=>{
     try{
     const response = await updateUser(userData, token);
-    console.log(response.data.user);
     return response.data.user;
+
     }catch(error){
       console.error(error);
       return thunkAPI.rejectWithValue(error.response.data);
@@ -68,13 +69,7 @@ const userSlice = createSlice({
     name: "users",
     initialState,
     reducers:{
-      // editedUser:(state,action)=>{
-      //   console.log(action.payload);
-      //   return{
-      //     ...state,
-      //     currentUser: state.allUsers.find(user =>user.username === action.payload)
-      //   }
-      // }
+   
         }
     ,
     extraReducers: (builder)=>{
@@ -114,16 +109,13 @@ const userSlice = createSlice({
           state.allUsers= state.allUsers.map((user)=> user.username === action.payload.username
            ? action.payload : user
           ) 
+        
         })
         
     }
 })
 
-/**
- * const updatedUsers = userState.allUsers.map((user) =>
-          user.username === updatedUser.username ? updatedUser : user
-        );
- */
+
 
 export const {editedUser} = userSlice.actions;
 export const userReducer = userSlice.reducer;

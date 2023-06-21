@@ -41,3 +41,35 @@ export const dislikePost = async(postId, token)=>{
         headers:{authorization : token}
     })
 }
+
+export const createPost = async(post, token)=>{
+    return await axios.post(`/api/posts`,
+    {
+        postData: post
+    },
+    {
+        headers: {authorization: token}
+    })
+}
+
+export const editPost = async(postId, post,token)=>{
+    return await axios.post(
+        `/api/posts/edit/${postId}`,
+        {
+            postData:post
+        },
+        {
+            headers: {authorization: token}
+        }
+    )
+}
+
+export const deletePost = async(postId, token)=>{
+    console.log(postId);
+    console.log(token);
+    return await axios.delete(`/api/posts/${postId}`,
+    {
+        headers: {authorization :token}
+    }
+    )
+}

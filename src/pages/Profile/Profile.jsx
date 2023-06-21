@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import "./profile.css"
 import { Link, useParams } from 'react-router-dom';
 import Posts from '../../components/Posts/Posts';
-import { editedUser, handleEditUser, handleFollowUser, handleUnfollowUser, userProfile } from '../Home/usersSlice';
+import { handleFollowUser, handleUnfollowUser } from '../Home/usersSlice';
 import { handleUserUpdate } from '../Auth/authSlice';
 import Modal from '../../components/Modal/Modal';
 import EditProfile from "../../components/Form/EditProfile"
@@ -18,10 +18,11 @@ const Profile = () => {
  const {allUsers} = useSelector(store => store.users);
  const {user} = useSelector(store => store.auth);
  const currentUser = allUsers.find((user)=> user.username === username);
- 
- const userPosts = allPosts.filter((post)=> post.username === currentUser.username);
+ const userPosts = allPosts.filter((post)=> post.username === username);
 
-console.log(currentUser);
+
+ const isFollowing = (user) => user?.following?.find(({ username }) => username === currentUser?.username);
+ console.log(isFollowing);
 
   return (
     <>
@@ -43,12 +44,13 @@ console.log(currentUser);
         <button
         onClick={()=>{
          setShowModal(true)
+      
         }}
         >
         edit
         </button>
         :
-        currentUser?.following?.some((item) => item._id === user?._id) ? (
+        isFollowing(currentUser)? (
            <button
            onClick={()=>{
             dispatch(handleUnfollowUser({followerId: currentUser?._id, token, dispatch, handleUserUpdate}))
@@ -61,7 +63,7 @@ console.log(currentUser);
             }
           }
           className="btn btn-primary"
-        >follow</button>)       
+        >{!isFollowing(currentUser) ?"follow" :"following "}</button>)       
       }
       {showModal && <Modal modalBody={<EditProfile  currentUser={currentUser} setShowModal={setShowModal}/>} setShowModal={setShowModal}/>}
      </div>

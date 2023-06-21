@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import { addBookmark, dislikePost, getAllBookmarks, getAllPosts, likePost, removeBookmark } from "../../services/posts";
+import { addBookmark, createPost, deletePost, dislikePost, getAllBookmarks, getAllPosts, likePost, removeBookmark } from "../../services/posts";
+import { updateUser } from "../../services/users";
 
 const initialState={
     isLoading: false,
@@ -85,6 +86,44 @@ export const handleDislikes = createAsyncThunk(
         }
     }
 )
+export const handleEditUserPost = createAsyncThunk(
+    "users/handleEditUserPost",
+    async({userData,token}, thunkAPI)=>{
+      try{
+      const response = await updateUser(userData, token);
+      return response.data.user;
+  
+      }catch(error){
+        console.error(error);
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+    }
+) 
+
+export const handleCreatePost = createAsyncThunk(
+    "posts/handleCreatePost",
+    async({post,token}, thunkAPI)=>{
+        try{
+            const response = await createPost(post,token);
+            console.log(response.data.posts);
+            return response.data.posts;
+        }catch(error){
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+)
+
+export const handleDeletePost = createAsyncThunk(
+    "posts/handleDeletePost",
+    async({postId, token}, thunkAPI)=>{
+        try{
+            const response = await deletePost(postId,token);
+            return response.data.posts;
+        }catch(error){
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+)
 
 
 const postsSlice = createSlice(
@@ -109,6 +148,14 @@ const postsSlice = createSlice(
         })
         builder.addCase(handleGetAllPosts.rejected, (state)=>{
             state.isLoading = false;
+        })
+        builder.addCase(handleEditUserPost.fulfilled, (state,action)=>{
+         state.allPosts = state.allPosts.map((post)=> post.username === action.payload.username 
+         ? {...post, avatarURL: action.payload.avatarURL} : post
+         )
+
+         
+         console.log(state.allPosts);
         })
         builder.addCase(handleGetAllBookmarks.pending, (state)=>{
             state.isLoading = true;
@@ -160,12 +207,31 @@ const postsSlice = createSlice(
         builder.addCase(handleDislikes.rejected, (state)=>{
             state.isLoading = false
         })
-
+        builder.addCase(handleDeletePost.pending, (state)=>{
+            state.isLoading = true;
+        })
+        builder.addCase(handleDeletePost.fulfilled, (state, action)=>{
+            state.isLoading = false;
+            state.allPosts = [...action.payload];
+        })
+        builder.addCase(handleDeletePost.rejected, (state)=>{
+            state.isLoading = false;
+        })
+        builder.addCase(handleCreatePost.pending, (state)=>{
+            state.isLoading = true;
+        })
+        builder.addCase(handleCreatePost.fulfilled, (state, action)=>{
+            state.isLoading = false;
+            state.allPosts = [...action.payload]
+        })
+        builder.addCase(handleCreatePost.rejected, (state)=>{
+            state.isLoading = false;
+        })
 
      }
 }
 
 )
 
-export const {setFilterPost} = postsSlice.actions;
+export const {setFilterPost, updateUserPost} = postsSlice.actions;
 export const postsReducer = postsSlice.reducer; 

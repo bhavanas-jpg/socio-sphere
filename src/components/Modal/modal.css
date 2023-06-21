@@ -29,7 +29,7 @@
     background: linear-gradient(rgb(253, 252, 252), rgb(255 255 255) 50%, rgb(253, 253, 252) 100%);
     margin-bottom: 1.5rem;
     position: absolute;
-    bottom: 4rem;
+    bottom: -5rem;
     width: 400px;
 }
 
