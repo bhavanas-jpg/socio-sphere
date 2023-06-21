@@ -31,3 +31,19 @@
     font-weight: 700;
     letter-spacing: 0.3px;
 }
+.menu-title.active,
+.menu-title.active i{
+    color: var(--color-primary);
+   
+}
+.menu-title.active{
+    font-size: 1.1rem;
+}
+
+/* .left .sidebar .active{
+    background: var(--color-light);
+}
+.left .sidebar .active i,
+.left .sidebar .active h3{
+    color: var(--color-primary)
+} */

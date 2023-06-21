@@ -18,10 +18,14 @@ const Navbar = () => {
             <aside className="sidebar">
                 <ul>
                     <li className="menu-item ">
-                        <NavLink to="/" className="menu-title"><i class="uil uil-home"></i>Home</NavLink>
+                        <NavLink to="/" 
+                       
+                        className="menu-title "><i class="uil uil-home"></i>Home</NavLink>
                     </li>
                     <li className="menu-item ">
-                        <NavLink to="/explore" className="menu-title"><i class="uil uil-compass"></i>Explore</NavLink>
+                        <NavLink to="/explore" 
+                        
+                        className="menu-title"><i class="uil uil-compass"></i>Explore</NavLink>
                     </li>
                     <li className="menu-item ">
                         <NavLink to="/bookmark" className="menu-title"><i class="uil uil-bookmark"></i>BookMarks</NavLink>
@@ -34,10 +38,10 @@ const Navbar = () => {
                     <li className="menu-item"
                         onClick={() => {
                             dispatch(handleLogout());
-                            navigate("/login")
+                          
                         }}
                     >
-                        <NavLink className="menu-title"><i class="uil  uil-sign-out-alt"></i>Log out</NavLink>
+                        <NavLink to="/login" className="menu-title"><i class="uil  uil-sign-out-alt"></i>Log out</NavLink>
                     </li>
                 </ul>
             </aside>

@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getTimeDifference } from '../helpers/getTimeDifference';
+import { getTimeDifference } from '../../helpers/getTimeDifference';
 import { handleAddtoBookmarks, handleDeletePost, handleDislikes, 
-    handleLikes, handleRemovefromBookmarks } from '../components/Posts/postsSlice';
+    handleEditUserPost, 
+    handleLikes, handleRemovefromBookmarks } from './postsSlice';
+import Modal from '../Modal/Modal';
+import EditPost from '../Form/EditPost';
 
 const PostCard = ({post}) => {
     const {_id, avatarURL,
         firstName, lastName, mediaURL, username ,
         content, hashtags, createdAt,likes:{likedBy} } = post;
         const [showActionBtns, setShowActionBtns] = useState(false);
+        const [showModal, setShowModal] = useState(false);
         const {token, user} = useSelector(store => store.auth);
         const {bookmarkPosts} = useSelector(store => store.posts);
         const {allUsers} = useSelector(store => store.users);
@@ -44,8 +48,19 @@ const PostCard = ({post}) => {
                {
                 showActionBtns &&
                 <div className="post__action--btns">
-                  <button >Edit</button>
-                  <button onClick={ ()=>dispatch(handleDeletePost({postId:_id, token})) }>Delete</button>
+                  <button 
+                  onClick={()=> {
+                    dispatch(handleEditUserPost({postId:_id, post, token}));
+                    setShowModal(true);
+                    setShowActionBtns(false);
+                  }                 
+                  }
+                  >Edit</button>
+                  <button onClick={ ()=>{
+                     dispatch(handleDeletePost({postId:_id, token}))
+                    setShowActionBtns(false);
+                  }                   
+                    }>Delete</button>
                 </div>
                }
                  </div>         
@@ -120,6 +135,10 @@ const PostCard = ({post}) => {
                     <p className="hash-tag">{hashtags}</p> 
                     </p>
                 </div>
+        {showModal && <Modal modalBody={<EditPost 
+        post={post} setShowModal={setShowModal} 
+        />} setShowModal={setShowModal}/>}  
+
             </div>
   )
 }

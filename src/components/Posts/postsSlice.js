@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import { addBookmark, createPost, deletePost, dislikePost, getAllBookmarks, getAllPosts, likePost, removeBookmark } from "../../services/posts";
+import { addBookmark, createPost, deletePost, dislikePost, editPost, getAllBookmarks, getAllPosts, likePost, removeBookmark } from "../../services/posts";
 import { updateUser } from "../../services/users";
 
 const initialState={
@@ -88,10 +88,10 @@ export const handleDislikes = createAsyncThunk(
 )
 export const handleEditUserPost = createAsyncThunk(
     "users/handleEditUserPost",
-    async({userData,token}, thunkAPI)=>{
+    async({postId,post,token}, thunkAPI)=>{
       try{
-      const response = await updateUser(userData, token);
-      return response.data.user;
+      const response = await editPost( postId,post,token);
+       return response.data.posts;
   
       }catch(error){
         console.error(error);
@@ -150,12 +150,8 @@ const postsSlice = createSlice(
             state.isLoading = false;
         })
         builder.addCase(handleEditUserPost.fulfilled, (state,action)=>{
-         state.allPosts = state.allPosts.map((post)=> post.username === action.payload.username 
-         ? {...post, avatarURL: action.payload.avatarURL} : post
-         )
-
-         
-         console.log(state.allPosts);
+            state.isLoading = false;
+            state.allPosts =  action.payload;   
         })
         builder.addCase(handleGetAllBookmarks.pending, (state)=>{
             state.isLoading = true;

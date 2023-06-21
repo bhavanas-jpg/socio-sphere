@@ -65,8 +65,6 @@ export const editPost = async(postId, post,token)=>{
 }
 
 export const deletePost = async(postId, token)=>{
-    console.log(postId);
-    console.log(token);
     return await axios.delete(`/api/posts/${postId}`,
     {
         headers: {authorization :token}

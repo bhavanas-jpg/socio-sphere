@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import "./posts.css"
 
-import PostCard from '../PostCard';
+import PostCard from './PostCard';
 import { handleGetAllPosts } from './postsSlice';
 
 
@@ -19,7 +19,7 @@ const Posts = ({ posts }) => {
       <div className="feeds">
         {
           posts?.map((post)=> (
-            <PostCard post={post} />
+            <PostCard key={post._id} post={post} />
           ))
         }
 
