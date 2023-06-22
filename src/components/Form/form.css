@@ -14,16 +14,21 @@
 .user__info{
     display: flex;
     align-items: center;
-    gap: 1rem
+    gap: 1rem;
+    margin-bottom: 0.5rem;
 }
 textarea{
     width: 100%;   
     outline: none;
     resize: none;
+    padding: 0.5rem;
+    border: 1px solid var(--color-gray);
+    border-radius: 7px;
 }
 .edit__post--image{
     width: 100px;
     height: 100px;
+    opacity: 0.7;
 }
 .add__image{
     width: 0 !important;
@@ -45,6 +50,11 @@ textarea{
 .edit__image{
     opacity: 0.7;
     
+}
+.edit__post{
+    left: 3.8rem !important;;
+    top: 18rem !important;;
+
 }
 .avatars{
     display: flex;
@@ -69,4 +79,7 @@ textarea{
     gap: 1rem;
     align-items: center;
     justify-content: flex-end;
+}
+.modal-body.edit-post{
+    bottom: -11rem !important;
 }

@@ -7,6 +7,7 @@ import { handleAddtoBookmarks, handleDeletePost, handleDislikes,
 import Modal from '../Modal/Modal';
 import EditPost from '../Form/EditPost';
 
+
 const PostCard = ({post}) => {
     const {_id, avatarURL,
         firstName, lastName, mediaURL, username ,
@@ -20,6 +21,7 @@ const PostCard = ({post}) => {
 
         const userImg = allUsers?.find(user => user?.username === username );
         console.log(userImg);
+        const isEdit = true;
 
   return (
     <div className="feed" key={_id}>
@@ -137,7 +139,9 @@ const PostCard = ({post}) => {
                 </div>
         {showModal && <Modal modalBody={<EditPost 
         post={post} setShowModal={setShowModal} 
-        />} setShowModal={setShowModal}/>}  
+        />} setShowModal={setShowModal}
+        edit={isEdit}
+        />}  
 
             </div>
   )

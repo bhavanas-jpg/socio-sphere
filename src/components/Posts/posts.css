@@ -64,3 +64,8 @@
 .post__action--btns button{
     cursor: pointer;
 }
+.hash-tag{
+    color: rgb(29, 155, 240);
+    font-size: 0.8rem;
+    font-weight: bold;
+}

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
     const {user} = useSelector(store=>store.auth);
     const navigate = useNavigate();
+    const logo = "/assets/logo-image.gif"
     
   return (
     <header>
@@ -15,7 +16,7 @@ const Header = () => {
               <div className="logo__container"
               onClick={()=>navigate("/")}
               >
-              <img src="https://im2.ezgif.com/tmp/ezgif-2-c0387b6cd2.gif" 
+              <img src={logo}
                   className="logo__image"
                   alt="logo-image" />
                   <h3 className="logo">SocioSphere</h3>

@@ -1,7 +1,8 @@
 import React from 'react';
 import "./modal.css"
+import "../Form/form.css"
 
-const Modal = ({modalBody, setShowModal}) => {
+const Modal = ({modalBody, setShowModal,  edit}) => {
   return (
     <div className="overlay">
         <div className="modal">
@@ -10,7 +11,8 @@ const Modal = ({modalBody, setShowModal}) => {
             onClick={()=>setShowModal(false)}
             class="uil uil-times"></i>
             </div>
-            <div className="modal-body">
+
+            <div className={edit ? "modal-body edit-post" : "modal-body"}>
                 {modalBody}
             </div>
         </div>

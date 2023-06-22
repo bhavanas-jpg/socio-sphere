@@ -3,21 +3,23 @@ import Posts from '../../components/Posts/Posts'
 import { useDispatch, useSelector } from 'react-redux';
 import "./home.css"
 import { handleCreatePost, setFilterPost } from '../../components/Posts/postsSlice';
+import { TbAdjustmentsHorizontal } from "react-icons/tb";
 
 
 const Home = () => {
 
   const {user, token} = useSelector(store => store.auth);
   const {allPosts, filterPost} = useSelector(store => store.posts);
-  const sortTypes = ["Oldest", "Latest", "Trending"];
   const [postValues, setPostValues] = useState({
     content: "",
     mediaURL:"",
     avatarURL: user?.avatarURL,
     firstName: user?.firstName,
     lastName: user?.lastName
-  })
+  });
+  const [showFilter, setShowFilter] = useState(false);
   const dispatch = useDispatch();
+  const sortTypes = ["Oldest", "Latest", "Trending"];
 
  const homePosts = allPosts.filter((post)=>
  user?.following?.some(
@@ -92,17 +94,36 @@ const Home = () => {
        disabled={!postValues.content.length}
          className="btn btn-primary" >Post</button>
       </form>
+     <div className="filter__container">
+       <div 
+       onClick={()=>setShowFilter(!showFilter)}
+       className="filter__header">
+       <h3>{filterPost} Posts</h3>
+      <TbAdjustmentsHorizontal
+      className="filter__icon"
+       />
+       </div>
+     {
+      showFilter &&
       <ul className="filter-lists">
       {
         sortTypes.map((type)=>(
           <li
           key={type}
           className={type === filterPost ? "isActive" : ""}
-          onClick={()=>dispatch(setFilterPost(type))}
+          onClick={()=>
+            {
+              dispatch(setFilterPost(type));
+              setShowFilter(false)
+            }}
           >{type}</li>
         ))
       }
       </ul>
+     }
+     
+      </div>
+
          <Posts  posts={sortedPosts(filterPost, homePosts)}/> 
     </div>
    
