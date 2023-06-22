@@ -32,23 +32,34 @@ const Profile = () => {
             <img src={currentUser?.avatarURL} alt={currentUser?.username} />
           </div>
           <div className="handle">
-            <h4>{currentUser?.firstName}  {currentUser?.lastName}</h4>
-            <p className="text-muted">{currentUser?.username}</p>
+            <div>
+            <h3>{currentUser?.firstName}  {currentUser?.lastName}</h3>
+            <p className="text-muted username__text">{currentUser?.username}</p>
             <p> {currentUser?.bio}</p>
-            <Link target="_blank" to={currentUser?.website}>{currentUser?.website}</Link>
+            <Link 
+            className="website__link"
+            target="_blank" to={currentUser?.website}>{currentUser?.website}</Link>
+            <p className="follow__sec">
+              <p>
+              <b>{currentUser?.followers.length}</b> 
+              <span className="text-muted">Followers</span>
+              </p>
+            {" "}
             <p>
-              <span> {currentUser?.followers.length} Followers</span>{" "}
-              <span>{currentUser?.following.length} Following</span>
+            <b>{currentUser?.following.length} </b>
+              <span className="text-muted">Following</span>
             </p>
+            </p>
+            </div>
+            <div>
             {user?.username === currentUser?.username ?
-              <button
+             <div>
+               <i 
                 onClick={() => {
                   setShowModal(true)
-
                 }}
-              >
-                edit
-              </button>
+               className="uil uil-edit"></i>
+              </div>
               :
               isFollowing(currentUser) ? (
                 <button
@@ -64,6 +75,9 @@ const Profile = () => {
                 className="btn btn-primary"
               >{!isFollowing(currentUser) ? "follow" : "following "}</button>)
             }
+            </div>
+           
+            
             {showModal && <Modal modalBody={<EditProfile currentUser={currentUser} setShowModal={setShowModal} />} setShowModal={setShowModal} />}
           </div>
         </section>

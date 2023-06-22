@@ -20,8 +20,7 @@ const NavRoutes = () => {
   return (
     <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+     
         {/* <Route path="/explore" element={<Explore  />}/> */}
         <Route path="/bookmark" element={<BookMark />} />
         <Route path="/profile/:username" element={<Profile />} />

@@ -34,38 +34,46 @@ const PostCard = ({post}) => {
                     <h3>{firstName} {lastName}</h3>
                     <small>{getTimeDifference(createdAt)}</small>
                   </div>
-                </div>              
-                 <div>
+                </div>    
+                <div className="edit__container"> 
+                 <div className="edit__icon">
                   {
                     username ===user?.username ?
-                    <span className="edit"
+                    <div className="edit"
                     onClick={()=>
                       {
                         setShowActionBtns(!showActionBtns);                     
                       }}
                     >
                     <i class="uil uil-ellipsis-h"></i>
-                  </span> : <span></span>
-                  }           
-               {
+                  </div> : <span></span>
+                  } 
+                   </div>
+                   <div>
+                   {
                 showActionBtns &&
-                <div className="post__action--btns">
-                  <button 
-                  onClick={()=> {
+                <ul className="post__action--btns">
+                  <li  onClick={()=> {
                     dispatch(handleEditUserPost({postId:_id, post, token}));
                     setShowModal(true);
                     setShowActionBtns(false);
                   }                 
-                  }
-                  >Edit</button>
-                  <button onClick={ ()=>{
-                     dispatch(handleDeletePost({postId:_id, token}))
-                    setShowActionBtns(false);
-                  }                   
-                    }>Delete</button>
-                </div>
+                  }>
+                  Edit
+               
+                  </li>
+                  <li
+                  onClick={ ()=>{
+                    dispatch(handleDeletePost({postId:_id, token}))
+                   setShowActionBtns(false);
+                 }                   
+                   }>
+                  Delete
+                  </li>                
+                </ul>
                }
-                 </div>         
+                    </div>          
+                    </div>                          
               </div>
               <div className="photo">
                 <img src={mediaURL} alt={mediaURL} />
