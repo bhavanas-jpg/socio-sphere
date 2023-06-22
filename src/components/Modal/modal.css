@@ -37,11 +37,16 @@
     cursor: pointer;
     border: none;
     outline: none;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-weight: 600;
     position: absolute;
-    bottom: 16rem;
-    right: 0;
+    bottom: 15rem;
+    right: -4rem;
     z-index: 999;
     color: #000;
+}
+.modal-close:hover{
+    background-color : rgb(27 26 26 / 45%);
+    border-radius: 50%;
+    transition: background-color 300ms ease;
 }

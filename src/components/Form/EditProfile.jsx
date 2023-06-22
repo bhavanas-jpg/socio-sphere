@@ -50,24 +50,29 @@ const EditProfile = ({ currentUser, setShowModal }) => {
     return (
         <div>
             <form className="edit-form" onSubmit={(e) => handleSubmit(e, formValues)}>
+                <div className="avatar-container">
                 <label>
                     Photo
-                    <img className="profile-picture"
+                    <img className="profile-picture edit__image"
                         src={avatarURL}
                     />
                     <input
                         onChange={changePictureHandler}
                         type="file"
-                        style={{ opacity: "0" }}
+                        className="add__image"
                     />
+                     <i className="uil uil-image"></i>
                 </label>
-                <div style={{ display: "flex" }}>
+                <label className="avatar__title">choose any avatar
+                <div className="avatars">
                     {avatars.map(avatar =>
                         <img
                             className="profile-picture"
                             src={avatar} alt="avatar_image"
                             onClick={handleImageClick} />
                     )}
+                </div>
+                </label>
                 </div>
                 <label>
                     Bio
@@ -84,8 +89,15 @@ const EditProfile = ({ currentUser, setShowModal }) => {
                         value={website} />
                 </label>
 
-
-                <button type="submit">Save</button>
+                <div className="btn__container">
+                <button 
+                 onClick={()=>setShowModal(false)}
+                className="btn discard-btn">Discard</button>
+                <button 
+                className='btn btn-primary'
+                type="submit">Save</button>
+                </div>
+                
             </form>
         </div>
     )

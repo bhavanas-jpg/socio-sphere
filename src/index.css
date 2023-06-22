@@ -89,3 +89,6 @@ img {
     column-gap: 2rem;
     position: relative;
 }
+.discard-btn{
+    color: rgb(213, 32, 32);
+}

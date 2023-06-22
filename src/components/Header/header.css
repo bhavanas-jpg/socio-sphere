@@ -43,3 +43,14 @@ nav .create {
     align-items: center;
     gap: 2rem;
 }
+.logo__container{
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    cursor: pointer;
+}
+.logo__image{
+    width: 38px;
+   height: 38px;
+   border-radius: 50%;
+}

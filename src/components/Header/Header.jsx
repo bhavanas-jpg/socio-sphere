@@ -2,15 +2,25 @@ import React from 'react';
 import "./header.css"
 import "../../index.css"
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const {user} = useSelector(store=>store.auth);
+    const navigate = useNavigate();
     
   return (
     <header>
         <nav>
             <div className="container">
-                <h2 className="logo">SocioSphere</h2>
+              <div className="logo__container"
+              onClick={()=>navigate("/")}
+              >
+              <img src="https://im2.ezgif.com/tmp/ezgif-2-c0387b6cd2.gif" 
+                  className="logo__image"
+                  alt="logo-image" />
+                  <h3 className="logo">SocioSphere</h3>
+              </div>
+                
                 <div className="search-bar">
                 <i class="uil uil-search"></i>
                 <input type="search" placeholder="Search for creators, inspirations and projects" /> 

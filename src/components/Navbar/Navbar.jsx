@@ -28,7 +28,10 @@ const Navbar = () => {
                         className="menu-title"><i class="uil uil-compass"></i>Explore</NavLink>
                     </li>
                     <li className="menu-item ">
-                        <NavLink to="/bookmark" className="menu-title"><i class="uil uil-bookmark"></i>BookMarks</NavLink>
+                        <NavLink to="/bookmark" className="menu-title">
+                            <i class="uil uil-bookmark"></i>
+                         <span>BookMarks</span>   
+                        </NavLink>
                     </li>
                     <li className="menu-item"
                     onClick={()=>  navigate(`/profile/${user?.username}`)}

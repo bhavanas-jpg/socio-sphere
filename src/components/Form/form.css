@@ -8,6 +8,8 @@
     padding: 0.5rem;
     border-radius: 5px;
     outline: none;
+    margin: 10px 0;
+    font-weight: bold;
 }
 .user__info{
     display: flex;
@@ -22,4 +24,49 @@ textarea{
 .edit__post--image{
     width: 100px;
     height: 100px;
+}
+.add__image{
+    width: 0 !important;
+    position: relative;
+    opacity: 0;
+    bottom: 2rem;
+    left: 1rem;
+	padding: 0 !important;
+    margin: 0 !important;
+}
+.uil.uil-image{
+    position: absolute;
+    left: 2.5rem;
+    top: 4rem;
+    color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.edit__image{
+    opacity: 0.7;
+    
+}
+.avatars{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2rem;
+}
+.avatar-container{
+    display: flex;
+}
+.avatar__title{
+    margin-left: 1rem;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.avatars img{
+    cursor: pointer;
+}
+.btn__container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
 }
