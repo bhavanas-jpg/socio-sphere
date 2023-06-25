@@ -147,7 +147,8 @@ const PostCard = ({post}) => {
                 </div>
         {showModal && <Modal modalBody={<EditPost 
         post={post} setShowModal={setShowModal} 
-        />} setShowModal={setShowModal}
+        />} 
+        setShowModal={setShowModal}
         edit={isEdit}
         />}  
 

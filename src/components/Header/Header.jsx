@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./header.css"
 import "../../index.css"
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import CreatePost from '../Form/CreatePost';
+import Modal from '../Modal/Modal';
 
 const Header = () => {
     const {user} = useSelector(store=>store.auth);
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
-    const logo = "/assets/logo-image.gif"
+    const isEdit = true;
+    const logo = "/assets/logo-image.gif";
     
   return (
+    <>
     <header>
         <nav>
             <div className="container">
@@ -27,7 +32,10 @@ const Header = () => {
                 <input type="search" placeholder="Search for creators, inspirations and projects" /> 
                 </div>
                 <div className="create">
-         <label className="btn btn-primary" for="create-post">Create</label>
+         <button className="btn btn-primary"
+          for="create-post"
+          onClick={()=>setShowModal(true)}
+          >Create</button>
          <div className="profile-picture">
             <img src={user.avatarURL} alt="profile-picture" />
          </div>
@@ -35,6 +43,13 @@ const Header = () => {
             </div>
         </nav>
     </header>
+    {showModal && <Modal modalBody={<CreatePost
+     setShowModal={setShowModal} 
+      />} 
+      setShowModal={setShowModal}
+      edit={isEdit}
+      /> }
+    </>
   )
 }
 

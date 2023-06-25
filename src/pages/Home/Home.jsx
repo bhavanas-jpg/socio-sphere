@@ -102,8 +102,8 @@ const Home = () => {
        type="submit"
        disabled={!postValues.content.length}
          className="btn btn-primary" >Post</button>
-      </form>
-     <div className="filter__container">
+    </form>
+    <div className="filter__container">
        <div 
        onClick={()=>setShowFilter(!showFilter)}
        className="filter__header">
@@ -131,8 +131,8 @@ const Home = () => {
       </ul>
      }
      
-      </div>
-         <Posts  posts={sortedPosts(filterPost, homePosts)}/> 
+    </div>
+    <Posts  posts={sortedPosts(filterPost, homePosts)}/> 
     </div>
     <div>
     <SuggestedUser />
