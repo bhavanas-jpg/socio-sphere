@@ -19,6 +19,7 @@ const SuggestedUser = () => {
     )
   );
 
+
   useEffect(() => {
     dispatch(handleGetAllUsers())
   }, [dispatch])
@@ -32,7 +33,7 @@ const SuggestedUser = () => {
           <h3>Who to Follow</h3>
           <div className="users-container">
             {
-              suggestedusers.map(user => (
+            suggestedusers.map(user => (
                 <>
                   <div className="info">
                     <div className="profile-info"

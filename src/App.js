@@ -13,19 +13,10 @@ function App() {
 
   return (
     <div className="App">
-      {token && <Header />}
-      <AuthRoutes />
-      <div className="main">
-       <div className="container">
-       {token && <Navbar />}
-     
-      <NavRoutes />
-      
-        {token && <SuggestedUser />}
+      <AuthRoutes /> 
+       <NavRoutes />
        </div> 
-      </div>
-
-    </div>
+  
   );
 }
 

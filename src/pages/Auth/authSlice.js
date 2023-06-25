@@ -27,9 +27,9 @@ export const handleLogin = createAsyncThunk(
 
 export const handleSignup = createAsyncThunk(
     "auth/handleSignup",
-    async ({ firstName, lastName, username, password }, thunkAPI) => {
+    async ({ firstName, lastName, username, password,avatarURL }, thunkAPI) => {
         try {
-            const response = await signupService(firstName, lastName, username, password);
+            const response = await signupService(firstName, lastName, username, password,avatarURL);
             return response.data;
         } catch (error) {
             console.error(error);

@@ -7,6 +7,9 @@ import { handleFollowUser, handleUnfollowUser } from '../Home/usersSlice';
 import { handleUserUpdate } from '../Auth/authSlice';
 import Modal from '../../components/Modal/Modal';
 import EditProfile from "../../components/Form/EditProfile"
+import SuggestedUser from '../../components/SuggestedUser/SuggestedUser';
+import Navbar from '../../components/Navbar/Navbar';
+import Header from '../../components/Header/Header';
 
 const Profile = () => {
 
@@ -26,7 +29,14 @@ const Profile = () => {
 
   return (
     <>
-      <div>
+    <Header />
+     <div className="main">
+     <div className="container">
+     <div>
+    <Navbar />
+    </div>
+
+      <div>      
         <section class="profile">
           <div className="profile-picture">
             <img src={currentUser?.avatarURL} alt={currentUser?.username} />
@@ -81,8 +91,16 @@ const Profile = () => {
             {showModal && <Modal modalBody={<EditProfile currentUser={currentUser} setShowModal={setShowModal} />} setShowModal={setShowModal} />}
           </div>
         </section>
+
+
         <Posts posts={userPosts} />
       </div>
+      <div>
+    <SuggestedUser />
+    </div>
+      </div>
+      </div>
+
     </>
   )
 }

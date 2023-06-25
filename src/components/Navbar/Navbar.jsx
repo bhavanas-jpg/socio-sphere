@@ -36,7 +36,7 @@ const Navbar = () => {
                     <li className="menu-item"
                     onClick={()=>  navigate(`/profile/${user?.username}`)}
                     >
-                        <NavLink to="/profile" className="menu-title"><i class="uil uil-user"></i>Profile</NavLink>
+                        <NavLink to={`/profile/${user?.username}`} className="menu-title"><i class="uil uil-user"></i>Profile</NavLink>
                     </li>
                     <li className="menu-item"
                         onClick={() => {

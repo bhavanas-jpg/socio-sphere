@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./auth.css"
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleLogin } from './authSlice';
 import ReactPlayer from 'react-player';
-import "../../components/Header/header.css"
+import "../../components/Header/header.css";
+import SignUp from "./SignUp"
 
 const Login = () => {
   const [formValues, setFormValues] = useState({ username: "", password: "" });
+  const [togglePage,setTogglePage] = useState(true);
+  const {token} = useSelector(store => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const logo = "/assets/logo-image.gif"
 
   const testLogin = {
     username: "bhavana",
     password: "bhavanaS123"
   }
+
+
+
 
   return (
     <>
@@ -27,24 +34,26 @@ const Login = () => {
         </div>
         <main className="login__container">
           <div className="content">
-            <h1>Welcome to  Sociosphere</h1>
-            <p>Engage,
-              <br/> Connect, 
-              <br/>and Flourish in the Sociosphere</p>
+            <h1 className="heading"> Welcome to  SocioSphere</h1>
+            <p className="tagline typed-out">Engage,
+              Connect, and 
+              Flourish in the SocioSphere</p>
           </div>
-          <div>
-            <form
+          <div className="form__section">
+            {
+              togglePage ? 
+              <form
               onSubmit={(e) => {
                 e.preventDefault();
                 dispatch(handleLogin({
                   username: formValues.username,
                   password: formValues.password
                 }))
-                navigate("/")
+                navigate(location?.state?.from?.pathname)
               }
               }
               className='auth-form'>
-              <h1>SocioSphere
+              <h1 >SocioSphere
               <img src={logo}
                   className="logo__image"
                   alt="logo-image" />
@@ -63,18 +72,23 @@ const Login = () => {
                 onChange={(e) => setFormValues(prev => ({ ...prev, password: e.target.value }))}
               />
               <button
-                className='btn btn-primary'
+                className='btn btn-primary login-btn'
                 type="submit"
               >Log in</button>
               <button
                 type="submit"
-                className='btn btn-primary'
+                className='btn btn-primary guest-btn'
                 onClick={() => setFormValues({ username: testLogin.username, password: testLogin.password })}
               >Login As Guest</button>
-              <p>Don't have an account?
-                <Link to="/signup">Sign Up</Link>
+              <p className="para">Don't have an account?
+                <span
+                onClick={()=>setTogglePage(false)}
+                 className="link__text">Sign Up</span>
               </p>
-            </form>
+            </form> : 
+            <SignUp setTogglePage={setTogglePage}/>
+            }
+           
           </div>
         </main>
 

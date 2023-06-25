@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./home.css"
 import { handleCreatePost, setFilterPost } from '../../components/Posts/postsSlice';
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
+import Header from '../../components/Header/Header';
+import Navbar from '../../components/Navbar/Navbar';
+import SuggestedUser from '../../components/SuggestedUser/SuggestedUser';
 
 
 const Home = () => {
@@ -22,8 +25,9 @@ const Home = () => {
   const sortTypes = ["Oldest", "Latest", "Trending"];
 
  const homePosts = allPosts.filter((post)=>
+ post.username === user.username ||
  user?.following?.some(
-  (following) => following.username === post.username || post.username === user.username)
+  (following) => following.username === post.username )
  )
 
  const resetForm =()=>{
@@ -67,7 +71,12 @@ const Home = () => {
  
   return (
     <>
-  
+    <Header />
+     <div className="main">
+     <div className="container">
+     <div>
+    <Navbar />
+    </div>
     <div> 
     <form className="create-post"
     onSubmit={(e)=>{
@@ -123,10 +132,13 @@ const Home = () => {
      }
      
       </div>
-
          <Posts  posts={sortedPosts(filterPost, homePosts)}/> 
     </div>
-   
+    <div>
+    <SuggestedUser />
+    </div>
+    </div>
+    </div>
     </>
   )
 }

@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { handleSignup } from './authSlice'
 
-const SignUp = () => {
+const SignUp = ({setTogglePage}) => {
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
     username: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    avatarURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspzDIplyS6mahlqwPOpmblamV2hqb8cRc4ZNzfVlqGA&usqp=CAU&ec=48600113"
   })
  const dispatch = useDispatch();
  const navigate = useNavigate();
+ const location = useLocation();
+ const {token} = useSelector(store => store.auth);
+
 
   return (
     <>
@@ -23,9 +27,10 @@ const SignUp = () => {
         firstName : formValues.firstName,
         lastName : formValues.lastName,
         username : formValues.username,
-        password : formValues.password
+        password : formValues.password,
+        avatarURL: formValues.avatarURL
       }));
-      navigate("/");
+      navigate(location?.state?.from?.pathname)
     }}
     className="auth-form">
       <h1>Sign Up</h1>
@@ -61,9 +66,12 @@ const SignUp = () => {
      />
      <button 
      type="submit"
-     className='btn btn-primary'
+     className='btn btn-primary login-btn'
      >Sign Up</button>
-     <Link to="/login">back to login</Link>
+     <span
+     className="link__text"
+     onClick={()=>setTogglePage(true)}
+      >Back to Login</span>
 
     </form>
     </>
