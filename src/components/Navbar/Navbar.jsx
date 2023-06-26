@@ -11,8 +11,6 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const { user, token } = useSelector(store => store.auth);
 
-    console.log(user, "updated one");
-
     return (
         <section className="left">
             <aside className="sidebar">

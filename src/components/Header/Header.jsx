@@ -10,8 +10,10 @@ const Header = () => {
     const {user} = useSelector(store=>store.auth);
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
+    const {allUsers} = useSelector(store => store.users);
     const isEdit = true;
     const logo = "/assets/logo-image.gif";
+    const userImg = allUsers?.find(({ username })=> username === user?.username );
     
   return (
     <>
@@ -37,7 +39,7 @@ const Header = () => {
           onClick={()=>setShowModal(true)}
           >Create</button>
          <div className="profile-picture">
-            <img src={user.avatarURL} alt="profile-picture" />
+            <img src={userImg?.avatarURL} alt="profile-picture" />
          </div>
          </div>
             </div>

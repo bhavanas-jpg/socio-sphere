@@ -20,7 +20,6 @@ const PostCard = ({post}) => {
         const dispatch = useDispatch();
 
         const userImg = allUsers?.find(user => user?.username === username );
-        console.log(userImg);
         const isEdit = true;
 
   return (

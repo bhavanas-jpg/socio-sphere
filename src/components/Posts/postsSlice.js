@@ -105,7 +105,6 @@ export const handleCreatePost = createAsyncThunk(
     async({post,token}, thunkAPI)=>{
         try{
             const response = await createPost(post,token);
-            console.log(response.data.posts);
             return response.data.posts;
         }catch(error){
             return thunkAPI.rejectWithValue(error);

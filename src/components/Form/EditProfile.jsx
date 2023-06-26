@@ -35,7 +35,7 @@ const EditProfile = ({ currentUser, setShowModal }) => {
     }
 
     const handleSubmit = (e, values) => {
-        console.log(values, "after save button");
+    
         e.preventDefault();
         dispatch(handleEditUser({ userData: values, token }));
         // dispatch(handleEditUserPost({ userData: values, token }));

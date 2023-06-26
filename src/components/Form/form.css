@@ -83,3 +83,41 @@ textarea{
 .modal-body.edit-post{
     bottom: -11rem !important;
 }
+.post__username{
+    font-size: 0.8rem;
+    line-height: 0.9rem;
+}
+.mt-7{
+    margin-top: 7.2rem;
+}
+.smiley__icon{
+    position: absolute;
+    top: 8.4rem;
+    font-size: 1.3rem;
+    right: 3rem;
+    cursor: pointer;
+}
+.emoji__container{
+    position: absolute;
+}
+.post__btn:disabled{
+    opacity: 0.8;
+    cursor: none;
+}
+.close__image{
+    position: absolute;
+    top: 0.2rem;
+    left: 5rem;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+.post__image__container{
+    position: relative;
+}
+.post__image__container .uil.uil-times{
+font-weight: bold;
+cursor: pointer;
+}
+.post__image__container .uil.uil-times:hover{
+    background-color: var(--color-gray);
+}
