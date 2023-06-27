@@ -17,6 +17,7 @@ const PostCard = ({ post }) => {
 
   const [showActionBtns, setShowActionBtns] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showComments, setShowComments] = useState(false);
   const { token, user } = useSelector(store => store.auth);
   const { bookmarkPosts } = useSelector(store => store.posts);
   const { allUsers } = useSelector(store => store.users);
@@ -26,10 +27,12 @@ const PostCard = ({ post }) => {
   const isEdit = true;
 
 
+  console.log(showComments);
 
-
-
-
+  const handleShowComments =()=>{
+    console.log("triggered");
+    setShowComments(prev => !prev);
+  }
   return (
     <div className="feed" key={post?._id}>
       <div className="head">
@@ -100,8 +103,14 @@ const PostCard = ({ post }) => {
                   class="uil uil-heart"></i>
             }
           </span>
-          <span><i
-            onClick={() => navigate(`/post/${post?.id}`)}
+          <span onClick={()=>  handleShowComments}><i
+          onClick={
+            () =>{
+            
+            navigate(`/post/${post?.id}`);
+         
+             }          
+            }
             class="uil uil-comment-dots"></i></span>
           <span><i class="uil uil-share-alt"></i></span>
         </div>
@@ -121,39 +130,39 @@ const PostCard = ({ post }) => {
         </div>
       </div>
       <div className="liked-by">
-        {
-          !post?.likes?.likedBy?.length ? "" :
-            (
-              <>
-                {
-                  post?.likes?.likedBy?.slice(1).map(like =>
-                  (
-                    <span>
-                      <img src={like?.avatarURL} alt={like?.avatarURL} />
-                    </span>
-                  ))
-                }
-                {!post?.likes?.likedBy.length ? " " : <p>Liked by
-                  {
-                    post?.likes?.likedBy?.slice(2).map(like =>
-                    (
-                      <b>{like?.username},</b>
-                    ))
-                  }
-                  and others
-                </p>
-                }
-              </>
-            )
-        }
+      {
+  post?.likes?.likedBy?.length ? (
+    <>
+      {post.likes.likedBy.slice(1).map((like, index) => (
+        <span key={index}>
+          <img src={like?.avatarURL} alt={like?.avatarURL} />
+        </span>
+      ))}
+      <p>
+        Liked by
+        {post.likes.likedBy.length === 1 ? (
+          <b>{post.likes.likedBy[0]?.username}</b>
+        ) : (
+          <>
+            {post.likes.likedBy.slice(1).map((like, index) => (
+              <b key={index}>{like?.username},</b>
+            ))}
+            and others
+          </>
+        )}
+      </p>
+    </>
+  ) : null
+}
       </div>
       <div className="caption">
-        <p><b>{post?.firstName} {post?.lastName}</b>
-          {post?.content}
+      <p> <span><b>{post?.firstName} {post?.lastName}</b></span>
+      {post?.content}  </p>
           <p className="hash-tag">{post?.hashtags}</p>
-        </p>
+      
       </div>
-      <Comments post={post} />
+      {showComments &&  <Comments post={post} /> }
+     
       {showModal && <Modal modalBody={<EditPost
         post={post} setShowModal={setShowModal}
       />}

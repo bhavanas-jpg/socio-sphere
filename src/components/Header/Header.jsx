@@ -29,10 +29,10 @@ const Header = () => {
                   <h3 className="logo">SocioSphere</h3>
               </div>
                 
-                <div className="search-bar">
+                {/* <div className="search-bar">
                 <i class="uil uil-search"></i>
                 <input type="search" placeholder="Search for creators, inspirations and projects" /> 
-                </div>
+                </div> */}
                 <div className="create">
          <button className="btn btn-primary"
           for="create-post"
