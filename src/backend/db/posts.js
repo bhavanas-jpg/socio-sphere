@@ -35,16 +35,21 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        firstName: "Bhavana",
-        lastName: "S",
-        username: "bhavana",
-        avatarURL: "https://res.cloudinary.com/drjisfpis/image/upload/v1686544474/socioSphere/profile-4_tfbgyg.jpg",
+        firstName: "Afreen",
+        lastName: "Almaz",
+        username: "Afreen",
+        avatarURL: "https://res.cloudinary.com/drjisfpis/image/upload/v1686544619/socioSphere/profile-20_k20z1j.jpg",
         text: "Yoga is life.",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: []
-        },
         createdAt: new Date("January 02 2023 09:09:09")
+      },
+      {
+        _id: uuid(),
+          firstName: "Sophia",
+          lastName: "Anderson",
+          username: "SophiaA",
+          avatarURL: "https://res.cloudinary.com/drjisfpis/image/upload/v1686544474/socioSphere/profile-12_ge7xeq.jpg",
+          text: "Graceful flow, strength, and balance in yoga pose." ,
+          createdAt: new Date("February 18 2023 09:09:09")
       }
     ],
     username: "AmeliaT",
@@ -100,6 +105,7 @@ export const posts = [
     _id: uuid(),
     content: "Mountains mesmerize, nature's majesty captured in a single gaze.",
     mediaURL: "https://res.cloudinary.com/drjisfpis/image/upload/v1686565475/socioSphere/traveler-4_srz0sb.jpg",
+    videoURL:"https://res.cloudinary.com/drjisfpis/video/upload/v1687792905/pizza_bcjq9h.mp4",
     likes:{
     likeCount: 2,
     likedBy :[

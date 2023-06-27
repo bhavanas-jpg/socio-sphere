@@ -18,7 +18,7 @@ const CreatePost = ({ setShowModal }) => {
         lastName: user?.lastName
     });
 
-    console.log(formValues, "formvalue after emoji");
+  
 
     const resetForm = () => {
         setFormValues(prev => ({ ...prev, content: "", hashtags: "", mediaURL: "" }))
@@ -32,7 +32,7 @@ const CreatePost = ({ setShowModal }) => {
     }
 
     const handleEmojiClick = (emojiObj) => {
-        console.log("emoji");
+   
         const emoji = emojiObj.emoji;
         setFormValues({ ...formValues, content: formValues.content + emoji });
         setShowEmojiPicker(false);

@@ -51,7 +51,7 @@ export const getPostCommentsHandler = function (schema, request) {
   
       const comment = {
         _id: uuid(),
-        ...commentData,
+       text: commentData,
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
@@ -110,7 +110,7 @@ export const getPostCommentsHandler = function (schema, request) {
       }
       post.comments[commentIndex] = {
         ...post.comments[commentIndex],
-        ...commentData,
+        text: commentData,
         updatedAt: formatDate(),
       };
       this.db.posts.update({ _id: postId }, post);

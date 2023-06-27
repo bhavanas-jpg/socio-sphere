@@ -59,7 +59,7 @@ const Home = () => {
 
 
   const handleEmojiClick = (emojiObj) => {
-    console.log("emoji");
+
     const emoji = emojiObj.emoji;
     setPostValues({ ...postValues, content: postValues.content + emoji });
     setShowEmojiPicker(false);

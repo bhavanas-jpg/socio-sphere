@@ -11,7 +11,7 @@ const Posts = ({ posts }) => {
 
   useEffect(() => {
     dispatch(handleGetAllPosts())
-  }, [dispatch])
+  }, [])
 
 
   return (

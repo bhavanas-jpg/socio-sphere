@@ -1,12 +1,16 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import { addBookmark, createPost, deletePost, dislikePost, editPost, getAllBookmarks, getAllPosts, likePost, removeBookmark } from "../../services/posts";
-import { updateUser } from "../../services/users";
+import { useDispatch } from "react-redux";
+import { addComments, deleteComment, editComment } from "../../services/comments";
+
+
 
 const initialState={
     isLoading: false,
     allPosts:[],
     bookmarkPosts: [],
     filterPost: "Latest",
+    postComments : []
    
 }
 
@@ -123,6 +127,46 @@ export const handleDeletePost = createAsyncThunk(
         }
     }
 )
+export const handleAddComment = createAsyncThunk(
+    "comments/handleAddComment",
+    async( {postId,commentData, token}, thunkAPI)=>{
+        
+        try{
+            const response = await addComments(postId,commentData, token);
+          return response.data.posts;
+      
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+)
+export const handleEditComment = createAsyncThunk(
+    "comments/handleEditComment",
+    async( {postId,commentId, commentData, token}, thunkAPI)=>{
+        
+        try{
+            const response = await editComment(postId,commentId, commentData, token);
+          
+            return response.data.posts;    
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+)
+
+export const handleDeleteComment = createAsyncThunk(
+    "comments/handleDeleteComment",
+    async({postId, commentId, token}, thunkAPI)=>{
+        try{
+       const response = await deleteComment(postId, commentId, token);
+       return response.data.posts;
+       console.log(response.data ,"delete comment");
+
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+)
 
 
 const postsSlice = createSlice(
@@ -222,6 +266,37 @@ const postsSlice = createSlice(
         builder.addCase(handleCreatePost.rejected, (state)=>{
             state.isLoading = false;
         })
+          builder.addCase(handleAddComment.pending ,(state) =>{
+                state.isLoading = true;
+            })
+            builder.addCase(handleAddComment.fulfilled, (state,action)=>{
+                state.isLoading = false;
+                state.allPosts  = [...action.payload];
+            })
+            builder.addCase(handleAddComment.rejected, (state)=>{
+                state.isLoading = false;
+            })
+            builder.addCase(handleEditComment.pending ,(state) =>{
+                state.isLoading = true;
+            })
+            builder.addCase(handleEditComment.fulfilled, (state,action)=>{
+                state.isLoading = false;
+                state.allPosts  = [...action.payload];
+            })
+            builder.addCase(handleEditComment.rejected, (state)=>{
+                state.isLoading = false;
+            })
+            builder.addCase(handleDeleteComment.pending ,(state) =>{
+                state.isLoading = true;
+            })
+            builder.addCase(handleDeleteComment.fulfilled, (state,action)=>{
+                state.isLoading = false;
+                state.allPosts  = [...action.payload];
+            })
+            builder.addCase(handleDeleteComment.rejected, (state)=>{
+                state.isLoading = false;
+            })
+               
 
      }
 }

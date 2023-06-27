@@ -10,6 +10,7 @@ import Posts from "../components/Posts/Posts"
 import { useSelector } from 'react-redux';
 import Error from '../pages/Error';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import PostDetail from '../pages/PostDetail/PostDetail';
 
 
 const NavRoutes = () => {
@@ -42,6 +43,11 @@ const NavRoutes = () => {
         </PrivateRoute>
       }
       />
+      <Route path="/post/:postId" element={
+        <PrivateRoute>
+          <PostDetail />
+        </PrivateRoute>
+      }/>
       <Route path="*" element={<Error />} />
     </Routes>
   )
