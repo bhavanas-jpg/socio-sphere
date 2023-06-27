@@ -17,7 +17,8 @@ const CreatePost = ({ setShowModal }) => {
         firstName: user?.firstName,
         lastName: user?.lastName
     });
-
+    const {allUsers} = useSelector(store => store.users);
+    const userImg = allUsers?.find(({ username })=> username === user?.username );
   
 
     const resetForm = () => {
@@ -59,7 +60,7 @@ const CreatePost = ({ setShowModal }) => {
             <form onSubmit={(e) => handleSubmit(e, formValues)}>
                 <div className="user__info">
                     <div><img className="profile-picture"
-                        src={user?.avatarURL} alt="user-image" /></div>
+                        src={userImg?.avatarURL} alt="user-image" /></div>
                     <div>
                         <p>{user?.firstName} {user?.lastName}</p>
                         <p className="text-muted post__username">@{user?.username}</p>

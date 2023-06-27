@@ -29,5 +29,13 @@ font-size: 1.3rem;
     justify-content: space-around;
 }
 .follow__sec span{
-    margin-left: 0.4rem;
+    margin-left: 0.2rem;
+}
+.follow__sec p{
+    margin-right: 0.6rem;
+}
+.profile_user_info{
+display: flex;
+gap: 1rem ;
+align-items: center;
 }

@@ -10,6 +10,7 @@ import EditProfile from "../../components/Form/EditProfile"
 import SuggestedUser from '../../components/SuggestedUser/SuggestedUser';
 import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
+import FollowButton from '../../components/FollowButton';
 
 const Profile = () => {
 
@@ -38,18 +39,28 @@ const Profile = () => {
 
       <div>      
         <section class="profile">
+          <div className="profile_user_info">
           <div className="profile-picture">
             <img src={currentUser?.avatarURL} alt={currentUser?.username} />
           </div>
+          <div>
+          <h3>{currentUser?.firstName}  {currentUser?.lastName}</h3>
+            <p className="text-muted username__text">{`@${currentUser?.username}`}</p>
+          </div>
+          </div>
           <div className="handle">
             <div>
-            <h3>{currentUser?.firstName}  {currentUser?.lastName}</h3>
-            <p className="text-muted username__text">{currentUser?.username}</p>
+            
             <p> {currentUser?.bio}</p>
             <Link 
             className="website__link"
             target="_blank" to={currentUser?.website}>{currentUser?.website}</Link>
             <p className="follow__sec">
+            <p>
+              <b>{userPosts.length}</b>
+              <span className="text-muted">Posts</span>
+            </p>
+            {" "}
               <p>
               <b>{currentUser?.followers.length}</b> 
               <span className="text-muted">Followers</span>
@@ -59,6 +70,8 @@ const Profile = () => {
             <b>{currentUser?.following.length} </b>
               <span className="text-muted">Following</span>
             </p>
+            {" "}
+           
             </p>
             </div>
             <div>
@@ -71,20 +84,22 @@ const Profile = () => {
                className="uil uil-edit"></i>
               </div>
               :
-              isFollowing(currentUser) ? (
-                <button
-                  onClick={() => {
-                    dispatch(handleUnfollowUser({ followerId: currentUser?._id, token, dispatch, handleUserUpdate }))
-                  }}
-                >unfollow</button>
-              ) : (<button
-                onClick={() => {
-                  dispatch(handleFollowUser({ followerId: currentUser?._id, token, dispatch, handleUserUpdate }))
+              // isFollowing(currentUser) ? (
+              //   <button
+              //     onClick={() => {
+              //       dispatch(handleUnfollowUser({ followerId: currentUser?._id, token, dispatch, handleUserUpdate }))
+              //     }}
+              //   >unfollow</button>
+              // ) : (
+              //   <button
+              //     onClick={() => {
+              //       dispatch(handleFollowUser({ followerId: currentUser?._id, token, dispatch, handleUserUpdate }))
+              //     }}
+              //     className="btn btn-primary"
+              //   >follow</button>
+              // ) 
+           <FollowButton currentUser={currentUser} />
                 }
-                }
-                className="btn btn-primary"
-              >{!isFollowing(currentUser) ? "follow" : "following "}</button>)
-            }
             </div>
            
             

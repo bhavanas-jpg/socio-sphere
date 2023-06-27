@@ -42,7 +42,8 @@ export const handleUnfollowUser = createAsyncThunk(
   async({followerId, token, dispatch, handleUserUpdate}, thunkAPI)=>{
     try{
     const response = await unfollowUser(followerId, token);
-    dispatch(handleUserUpdate({userData: response.data.user, token}))
+    dispatch(handleUserUpdate({userData: response.data.user, token}));
+    return response.data; 
     }catch(error){
       console.error(error);
       return thunkAPI.rejectWithValue(error.response.data);

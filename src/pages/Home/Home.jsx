@@ -23,6 +23,7 @@ const Home = () => {
     firstName: user?.firstName,
     lastName: user?.lastName
   });
+  const {allUsers} = useSelector(store => store.users);
   const [showFilter, setShowFilter] = useState(false);
   const dispatch = useDispatch();
   const sortTypes = ["Oldest", "Latest", "Trending"];
@@ -32,6 +33,7 @@ const Home = () => {
     user?.following?.some(
       (following) => following.username === post.username)
   )
+  const userImg = allUsers?.find(({ username })=> username === user?.username );
 
   const resetForm = () => {
     setPostValues(prev => ({ ...prev, content: "", mediaURL: "" }))
@@ -101,7 +103,7 @@ const Home = () => {
             >
                <div className="create__post">
               <div className='profile-picture'>
-                <img src={user?.avatarURL} alt={user?.username} />
+                <img src={userImg?.avatarURL} alt={userImg?.username} />
               </div>
 
            
