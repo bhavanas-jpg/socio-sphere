@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar';
 import SuggestedUser from '../../components/SuggestedUser/SuggestedUser';
 import Header from '../../components/Header/Header';
@@ -20,6 +20,7 @@ const PostDetail = () => {
   }, [])
 
 
+
   return (
     <>
     <Header />
@@ -29,7 +30,8 @@ const PostDetail = () => {
           <Navbar />
         </div>
         <div>
-            <PostCard post={post} />
+            <PostCard post={post} showComment={true} />
+            
         </div>
         <div>
             <SuggestedUser />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useLocation } from 'react-router-dom';
 import { getTimeDifference } from '../../helpers/getTimeDifference';
 import {
   handleAddtoBookmarks, handleDeletePost, handleDislikes,
@@ -12,12 +13,12 @@ import { useNavigate } from 'react-router-dom';
 import Comments from '../Comments/Comments';
 
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post , showComment}) => {
 
 
   const [showActionBtns, setShowActionBtns] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [showComments, setShowComments] = useState(false);
+
   const { token, user } = useSelector(store => store.auth);
   const { bookmarkPosts } = useSelector(store => store.posts);
   const { allUsers } = useSelector(store => store.users);
@@ -27,12 +28,7 @@ const PostCard = ({ post }) => {
   const isEdit = true;
 
 
-  console.log(showComments);
 
-  const handleShowComments =()=>{
-    console.log("triggered");
-    setShowComments(prev => !prev);
-  }
   return (
     <div className="feed" key={post?._id}>
       <div className="head">
@@ -103,13 +99,13 @@ const PostCard = ({ post }) => {
                   class="uil uil-heart"></i>
             }
           </span>
-          <span onClick={()=>  handleShowComments}><i
+          <span >
+            <i
           onClick={
-            () =>{
-            
-            navigate(`/post/${post?.id}`);
-         
-             }          
+            (e) => {
+              e.stopPropagation();
+              navigate(`/post/${post?.id}`);
+            }
             }
             class="uil uil-comment-dots"></i></span>
           <span><i class="uil uil-share-alt"></i></span>
@@ -161,7 +157,8 @@ const PostCard = ({ post }) => {
           <p className="hash-tag">{post?.hashtags}</p>
       
       </div>
-      {showComments &&  <Comments post={post} /> }
+      {showComment &&  <Comments post={post} /> }
+      {/* <Comments post={post} /> */}
      
       {showModal && <Modal modalBody={<EditPost
         post={post} setShowModal={setShowModal}

@@ -10,7 +10,8 @@ const initialState={
     allPosts:[],
     bookmarkPosts: [],
     filterPost: "Latest",
-    postComments : []
+    postComments : [],
+   
    
 }
 
@@ -303,5 +304,5 @@ const postsSlice = createSlice(
 
 )
 
-export const {setFilterPost, updateUserPost} = postsSlice.actions;
+export const {setFilterPost, updateUserPost,setShowComments} = postsSlice.actions;
 export const postsReducer = postsSlice.reducer; 

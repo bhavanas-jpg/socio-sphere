@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { handleAddComment, handleDeleteComment, handleEditComment, handleGetAllPosts } from '../Posts/postsSlice';
 import { getTimeDifference } from '../../helpers/getTimeDifference';
 
-const Comments = ({ post }) => {
+const Comments = ({ post,setShowComments }) => {
   const { postComments } = useSelector(store => store.comments);
   const dispatch = useDispatch();
   const { user, token } = useSelector(store => store.auth);
@@ -32,8 +32,7 @@ const Comments = ({ post }) => {
   const commentArr = currentPost?.comments ?? [];
   console.log(commentArr);
   const sortedComments = [...commentArr].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  console.log(sortedComments);
-  console.log(Array.isArray(commentArr))
+  
 
 
 
