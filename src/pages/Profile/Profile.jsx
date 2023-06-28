@@ -16,7 +16,6 @@ const Profile = () => {
 
   const [showModal, setShowModal] = useState(false)
   const { username } = useParams();
-  const dispatch = useDispatch();
   const { token } = useSelector(store => store.auth);
   const { allPosts } = useSelector(store => store.posts);
   const { allUsers } = useSelector(store => store.users);
@@ -25,7 +24,7 @@ const Profile = () => {
   const userPosts = allPosts.filter((post) => post.username === username);
 
 
-  const isFollowing = (user) => user?.following?.find(({ username }) => username === currentUser?.username);
+
 
 
   return (
@@ -37,7 +36,7 @@ const Profile = () => {
     <Navbar />
     </div>
 
-      <div>      
+      <div  className="middle">      
         <section class="profile">
           <div className="profile_user_info">
           <div className="profile-picture">
@@ -83,21 +82,7 @@ const Profile = () => {
                 }}
                className="uil uil-edit"></i>
               </div>
-              :
-              // isFollowing(currentUser) ? (
-              //   <button
-              //     onClick={() => {
-              //       dispatch(handleUnfollowUser({ followerId: currentUser?._id, token, dispatch, handleUserUpdate }))
-              //     }}
-              //   >unfollow</button>
-              // ) : (
-              //   <button
-              //     onClick={() => {
-              //       dispatch(handleFollowUser({ followerId: currentUser?._id, token, dispatch, handleUserUpdate }))
-              //     }}
-              //     className="btn btn-primary"
-              //   >follow</button>
-              // ) 
+              : 
            <FollowButton currentUser={currentUser} />
                 }
             </div>

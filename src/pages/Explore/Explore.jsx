@@ -13,7 +13,7 @@ const Explore = ({posts}) => {
      <div>
     <Navbar />
     </div>
-    <div>
+    <div  className="middle">
    <Posts  posts={posts}/>
     </div>
     <div>

@@ -12,10 +12,7 @@
 .create__post--icons{
     position: relative;
 }
-.create__post--icons .img__icon{
-left: -30.5rem !important;
-top: 4rem !important;
-}
+
 
 .filter__header{
     display: flex;
@@ -59,7 +56,7 @@ top: 4rem !important;
     position: absolute;
     top: 4.4rem;
     font-size: 1.3rem;
-    right: 27rem;
+    right: 15rem;
     cursor: pointer;
 }
 .emoji--container{

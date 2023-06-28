@@ -27,7 +27,7 @@ const bookmarkedPosts = allPosts.filter(({_id}) => bookmarkPosts.includes(_id))
      <div>
     <Navbar />
     </div>
-    <div>
+    <div  className="middle">
       {
         !bookmarkPosts.length ? <p>No posts bookmarked</p> :
         <Posts posts={bookmarkedPosts}/>

@@ -11,6 +11,7 @@
 .sidebar .menu-item{
     display: flex;
     align-items: center;
+  
     height: 4rem;
     cursor: pointer;
     transition: all 300ms ease;

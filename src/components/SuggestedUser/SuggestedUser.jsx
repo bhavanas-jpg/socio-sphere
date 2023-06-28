@@ -28,7 +28,7 @@ const SuggestedUser = () => {
   return (
     <section className="right">
       {
-        // suggestedusers.length === 0 ? " ": 
+      
         <div className="users">
           <h3>Who to Follow</h3>
           <div className="users-container">
@@ -41,10 +41,11 @@ const SuggestedUser = () => {
                         navigate(`/profile/${user?.username}`)
                       }}>
                       <div className="profile-picture">
-                        <img src={user?.avatarURL} alt="" />
+                        <img src={user?.avatarURL} alt="{user?.username}" />
                       </div>
                       <div>
                         <h4>{user?.firstName} </h4>
+                        <p className="text-muted profile__username">@{user?.username}</p>
                       </div>
                     </div>
                     <div className="action">
@@ -58,10 +59,8 @@ const SuggestedUser = () => {
                       </button>
                     </div>
                   </div>
-
                 </>
               ))
-
             }
           </div>
         </div>

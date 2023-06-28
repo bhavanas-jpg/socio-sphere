@@ -16,33 +16,39 @@ const Navbar = () => {
             <aside className="sidebar">
                 <ul>
                     <li className="menu-item ">
-                        <NavLink to="/" 
-                       
-                        className="menu-title "><i class="uil uil-home"></i>Home</NavLink>
+                        <NavLink to="/"
+                            className="menu-title "><i class="uil uil-home"></i>
+                           <span>Home</span> </NavLink>
                     </li>
                     <li className="menu-item ">
-                        <NavLink to="/explore" 
-                        
-                        className="menu-title"><i class="uil uil-compass"></i>Explore</NavLink>
+                        <NavLink to="/explore"
+                            className="menu-title"><i class="uil uil-compass"></i>
+                          <span>Explore</span>  
+                        </NavLink>
                     </li>
                     <li className="menu-item ">
                         <NavLink to="/bookmark" className="menu-title">
                             <i class="uil uil-bookmark"></i>
-                         <span>BookMarks</span>   
+                            <span>BookMarks</span>
                         </NavLink>
                     </li>
                     <li className="menu-item"
-                    onClick={()=>  navigate(`/profile/${user?.username}`)}
+                        onClick={() => navigate(`/profile/${user?.username}`)}
                     >
-                        <NavLink to={`/profile/${user?.username}`} className="menu-title"><i class="uil uil-user"></i>Profile</NavLink>
+                        <NavLink to={`/profile/${user?.username}`} className="menu-title">
+                            <i class="uil uil-user"></i>
+                            <span> Profile</span> 
+                           </NavLink>
                     </li>
                     <li className="menu-item"
                         onClick={() => {
                             dispatch(handleLogout());
-                          
                         }}
                     >
-                        <NavLink to="/login" className="menu-title"><i class="uil  uil-sign-out-alt"></i>Log out</NavLink>
+                        <NavLink to="/login" className="menu-title">
+                            <i class="uil  uil-sign-out-alt"></i>
+                            <span>Log out</span> 
+                            </NavLink>
                     </li>
                 </ul>
             </aside>

@@ -61,7 +61,6 @@ const Home = () => {
 
 
   const handleEmojiClick = (emojiObj) => {
-
     const emoji = emojiObj.emoji;
     setPostValues({ ...postValues, content: postValues.content + emoji });
     setShowEmojiPicker(false);
@@ -92,7 +91,7 @@ const Home = () => {
             <Navbar />
           </div>
 
-          <div>
+          <div className="middle">
             <div className="create__post--container">
             <form 
               onSubmit={(e) => {
@@ -165,10 +164,11 @@ const Home = () => {
 
             <div className="filter__container">
               <div
-                onClick={() => setShowFilter(!showFilter)}
+              
                 className="filter__header">
                 <h3>{filterPost} Posts</h3>
                 <TbAdjustmentsHorizontal
+                 onClick={() => setShowFilter(!showFilter)}
                   className="filter__icon"
                 />
               </div>

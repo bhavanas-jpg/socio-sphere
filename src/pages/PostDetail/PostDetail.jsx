@@ -22,22 +22,23 @@ const PostDetail = () => {
 
 
   return (
-    <>
+   <>
     <Header />
+    <section className="postdetail__sec">
     <div className="main">
-      <div className="container">
-        <div>
+      <div className=" post-container">
+        
           <Navbar />
-        </div>
-        <div>
+        
+           <div className="middle">
             <PostCard post={post} showComment={true} />
-            
-        </div>
-        <div>
+            </div>
+       
             <SuggestedUser />
-          </div>
+          
     </div>
     </div>
+   </section>
    </>
   )
 }
