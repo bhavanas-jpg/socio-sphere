@@ -131,15 +131,9 @@ img {
      }
 }
 @media screen and (max-width: 992px){
-   
-    /* .container{
-        width: 80%;
-        margin: 0 auto;
-    } */
     .main .container{
         grid-template-columns: 16 90% 5rem ;
-        gap: 0;
-        
+        gap: 0;     
     }
   .left{
     z-index: 0 !important;
@@ -227,5 +221,18 @@ img {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .content {
+        display: none;
+    }
+
+     .auth-form{
+     margin: 1.5rem auto;
+     }
+     .login__container{
+         flex-direction: column;
+    }
+    .auth-form input {
+        width: 289px !important;
     }
 }

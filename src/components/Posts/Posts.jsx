@@ -8,14 +8,14 @@ import Loader from "../Loader/Loader";
 
 const Posts = ({ posts, homePosts }) => {
 
-  console.log(homePosts);
+
   const dispatch = useDispatch();
   const { isPostLoading, page } = useSelector((store) => store.posts);
   const bottomRef = useRef(null);
 
   const displayedPosts = posts.slice(0, page * 5);
 
-  console.log(displayedPosts.length, "length od posts");
+ 
 
   useEffect(() => {
     dispatch(handleGetAllPosts());
@@ -29,15 +29,14 @@ const Posts = ({ posts, homePosts }) => {
     }
   };
 
-  console.log(homePosts?.length , "length of homeposts prop");
-  console.log(displayedPosts?.length , "length of displayed posts");
+
 
   useEffect(() => {
     if (
       displayedPosts?.length > 0 &&
       displayedPosts?.length !== homePosts?.length
-    ) {
-      console.log("more posts");
+     ) {
+
       const elementRef = bottomRef?.current;
       const observer = new IntersectionObserver(handleObserver);
       if (elementRef) observer?.observe(elementRef);
@@ -64,7 +63,7 @@ const Posts = ({ posts, homePosts }) => {
     };
   }, [isPostLoading, displayedPosts]);
 
-  console.log(isPostLoading);
+
 
   return (
     <section>
@@ -80,10 +79,14 @@ const Posts = ({ posts, homePosts }) => {
                 ></div>
               )}
 
-              {isPostLoading && <Loader />}
+            {isPostLoading && <Loader />}
             </React.Fragment>
           );
         })}
+     {
+      displayedPosts?.length !== homePosts?.length ||
+      isPostLoading && <Loader />
+     }
       </div>
     </section>
   );

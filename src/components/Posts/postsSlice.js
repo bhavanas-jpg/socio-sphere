@@ -163,7 +163,7 @@ export const handleDeleteComment = createAsyncThunk(
         try{
        const response = await deleteComment(postId, commentId, token);
        return response.data.posts;
-       console.log(response.data ,"delete comment");
+     
 
         }catch(error){
             return thunkAPI.rejectWithValue(error.response.data);
@@ -190,7 +190,6 @@ const postsSlice = createSlice(
         }
     },
      setPage : (state,action)=>{
-        console.log(action.payload);
         return{
             ...state,
             page: action.payload

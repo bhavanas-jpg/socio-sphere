@@ -30,7 +30,6 @@ const Comments = ({ post,setShowComments }) => {
   }
 
   const commentArr = currentPost?.comments ?? [];
-  console.log(commentArr);
   const sortedComments = [...commentArr].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   
 
