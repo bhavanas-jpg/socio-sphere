@@ -126,3 +126,19 @@ background: linear-gradient(135deg, #a9a7a7, #7E7E7E);
   font-weight: bold;
   cursor:pointer;
 }
+.password__icon {
+  color: var(--color-white);
+}
+.password__input {
+  position: relative;
+}
+.password__input span {
+  position: absolute;
+  right: 1rem;
+  top: 0.9rem;
+  cursor: pointer;
+}
+.password-error-msg {
+  color: rgb(228, 56, 56);
+  font-size: 14px;
+}

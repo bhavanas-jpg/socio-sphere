@@ -53,7 +53,7 @@ const Posts = ({ posts, homePosts }) => {
     if (isPostLoading) {
       timeoutId = setTimeout(() => {
         dispatch(setIsPostLoading(false));
-      }, 1800);
+      }, 1500);
     } else {
       clearTimeout(timeoutId);
     }
@@ -62,7 +62,6 @@ const Posts = ({ posts, homePosts }) => {
       clearTimeout(timeoutId);
     };
   }, [isPostLoading, displayedPosts]);
-
 
 
   return (

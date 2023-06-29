@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { FaEye } from 'react-icons/fa';
+import { HiEyeOff } from 'react-icons/hi';
 import "./auth.css"
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +11,7 @@ import SignUp from "./SignUp"
 
 const Login = () => {
   const [formValues, setFormValues] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const [togglePage,setTogglePage] = useState(true);
   const {token} = useSelector(store => store.auth);
   const dispatch = useDispatch();
@@ -21,8 +24,9 @@ const Login = () => {
     password: "bhavanaS123"
   }
 
-
-
+  const handlePasswordToggle =()=>{
+    setShowPassword(!showPassword)
+  }
 
   return (
     <>
@@ -65,12 +69,20 @@ const Login = () => {
                 value={formValues.username}
                 onChange={(e) => setFormValues(prev => ({ ...prev, username: e.target.value }))}
               />
-              <input type="password"
+              <div className="password__input">
+              <input 
+              type={showPassword ? "text" :"password"}
                 required
                 placeholder='Enter Password'
                 value={formValues.password}
                 onChange={(e) => setFormValues(prev => ({ ...prev, password: e.target.value }))}
               />
+              <span
+              
+              onClick={handlePasswordToggle}
+              >{showPassword ? <FaEye className="password__icon"/> : <HiEyeOff className="password__icon"/>}</span>
+              </div>
+
               <button
                 className='btn btn-primary login-btn'
                 type="submit"
