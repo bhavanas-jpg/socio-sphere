@@ -93,7 +93,7 @@ const Profile = () => {
         </section>
 
 
-        <Posts posts={userPosts} />
+        <Posts posts={userPosts} homePosts={userPosts}/>
       </div>
       <div>
     <SuggestedUser />

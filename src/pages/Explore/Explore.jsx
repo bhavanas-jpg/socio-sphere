@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header'
 import Navbar from '../../components/Navbar/Navbar'
 import SuggestedUser from '../../components/SuggestedUser/SuggestedUser'
 
-const Explore = ({posts}) => {
+const Explore = ({posts  ,homePosts}) => {
   return (
     <>
     <Header />
@@ -14,7 +14,7 @@ const Explore = ({posts}) => {
     <Navbar />
     </div>
     <div  className="middle">
-   <Posts  posts={posts}/>
+   <Posts  posts={posts} homePosts={posts}/>
     </div>
     <div>
     <SuggestedUser />

@@ -11,6 +11,8 @@ const initialState={
     bookmarkPosts: [],
     filterPost: "Latest",
     postComments : [],
+    isPostLoading : false,
+    page : 1
    
    
 }
@@ -180,8 +182,22 @@ const postsSlice = createSlice(
             ...state,
             filterPost:action.payload
         }
+    },
+     setIsPostLoading : (state,action)=>{
+        return{
+            ...state,
+            isPostLoading : action.payload
+        }
+    },
+     setPage : (state,action)=>{
+        console.log(action.payload);
+        return{
+            ...state,
+            page: action.payload
+        }
      }
-     },
+     }
+    ,
      extraReducers: (builder) =>{
         builder.addCase(handleGetAllPosts.pending ,(state) =>{
             state.isLoading = true;
@@ -304,5 +320,9 @@ const postsSlice = createSlice(
 
 )
 
-export const {setFilterPost, updateUserPost,setShowComments} = postsSlice.actions;
+export const {setFilterPost, 
+    updateUserPost,
+    setShowComments,
+setIsPostLoading,
+setPage} = postsSlice.actions;
 export const postsReducer = postsSlice.reducer; 

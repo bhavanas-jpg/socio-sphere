@@ -1,43 +1,46 @@
-import React, { useState } from 'react'
-import Posts from '../../components/Posts/Posts';
-import { MdMood } from 'react-icons/md';
-import EmojiPicker from 'emoji-picker-react';
-import { useDispatch, useSelector } from 'react-redux';
-import "./home.css"
-import { handleCreatePost, setFilterPost } from '../../components/Posts/postsSlice';
+import React, { useEffect, useRef, useState } from "react";
+import Posts from "../../components/Posts/Posts";
+import { MdMood } from "react-icons/md";
+import EmojiPicker from "emoji-picker-react";
+import { useDispatch, useSelector } from "react-redux";
+import "./home.css";
+import {
+  handleCreatePost,
+  setFilterPost,
+} from "../../components/Posts/postsSlice";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
-import Header from '../../components/Header/Header';
-import Navbar from '../../components/Navbar/Navbar';
-import SuggestedUser from '../../components/SuggestedUser/SuggestedUser';
-
+import Header from "../../components/Header/Header";
+import Navbar from "../../components/Navbar/Navbar";
+import SuggestedUser from "../../components/SuggestedUser/SuggestedUser";
 
 const Home = () => {
-
-  const { user, token } = useSelector(store => store.auth);
-  const { allPosts, filterPost } = useSelector(store => store.posts);
+  const { user, token } = useSelector((store) => store.auth);
+  const { allPosts, filterPost } = useSelector(
+    (store) => store.posts
+  );
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [postValues, setPostValues] = useState({
     content: "",
     mediaURL: "",
     avatarURL: user?.avatarURL,
     firstName: user?.firstName,
-    lastName: user?.lastName
+    lastName: user?.lastName,
   });
-  const {allUsers} = useSelector(store => store.users);
+  const { allUsers } = useSelector((store) => store.users);
   const [showFilter, setShowFilter] = useState(false);
   const dispatch = useDispatch();
   const sortTypes = ["Oldest", "Latest", "Trending"];
 
-  const homePosts = allPosts.filter((post) =>
-    post.username === user.username ||
-    user?.following?.some(
-      (following) => following.username === post.username)
-  )
-  const userImg = allUsers?.find(({ username })=> username === user?.username );
+  const homePosts = allPosts.filter(
+    (post) =>
+      post.username === user.username ||
+      user?.following?.some((following) => following.username === post.username)
+  );
+  const userImg = allUsers?.find(({ username }) => username === user?.username);
 
   const resetForm = () => {
-    setPostValues(prev => ({ ...prev, content: "", mediaURL: "" }))
-  }
+    setPostValues((prev) => ({ ...prev, content: "", mediaURL: "" }));
+  };
 
   const sortedPosts = (filterType, homePosts) => {
     if (filterType === "Latest") {
@@ -49,7 +52,7 @@ const Home = () => {
     if (filterType === "Oldest") {
       const sortedPosts = homePosts.sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-      )
+      );
       return sortedPosts;
     } else {
       const sortedPosts = homePosts.sort(
@@ -57,14 +60,13 @@ const Home = () => {
       );
       return sortedPosts;
     }
-  }
-
+  };
 
   const handleEmojiClick = (emojiObj) => {
     const emoji = emojiObj.emoji;
     setPostValues({ ...postValues, content: postValues.content + emoji });
     setShowEmojiPicker(false);
-  }
+  };
 
   const changePictureHandler = (e) => {
     const file = e.target.files[0];
@@ -72,7 +74,7 @@ const Home = () => {
       if (file.size < 10 * 1024 * 1024) {
         setPostValues((prev) => ({
           ...prev,
-          mediaURL: URL.createObjectURL(file)
+          mediaURL: URL.createObjectURL(file),
         }));
       } else {
         alert("file must be less than 10mb");
@@ -80,7 +82,7 @@ const Home = () => {
     } else {
       alert("file must be an image (JPEG/PNG)");
     }
-  }
+  };
 
   return (
     <>
@@ -93,105 +95,111 @@ const Home = () => {
 
           <div className="middle">
             <div className="create__post--container">
-            <form 
-              onSubmit={(e) => {
-                e.preventDefault();
-                dispatch(handleCreatePost({ post: postValues, token }))
-                resetForm();
-              }}
-            >
-               <div className="create__post">
-              <div className='profile-picture'>
-                <img src={userImg?.avatarURL} alt={userImg?.username} />
-              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  dispatch(handleCreatePost({ post: postValues, token }));
+                  resetForm();
+                }}
+              >
+                <div className="create__post">
+                  <div className="profile-picture">
+                    <img src={userImg?.avatarURL} alt={userImg?.username} />
+                  </div>
 
-           
-              <textarea
-                className="post__input"
-                onChange={(e) => setPostValues({ ...postValues, content: e.target.value })}
-                cols="30" rows="4"
-                maxLength={100}
-                value={postValues.content}
-                placeholder="What's on your mind" >
-              </textarea> 
+                  <textarea
+                    className="post__input"
+                    onChange={(e) =>
+                      setPostValues({ ...postValues, content: e.target.value })
+                    }
+                    cols="30"
+                    rows="4"
+                    maxLength={100}
+                    value={postValues.content}
+                    placeholder="What's on your mind"
+                  ></textarea>
 
-                      
-              <div className="create__post--icons">               
+                  <div className="create__post--icons">
                     <label>
-                      <input type="file"
+                      <input
+                        type="file"
                         className="add__image"
                         onChange={changePictureHandler}
                       />
-                      <i className="uil uil-image img__icon ">
-                      </i>
+                      <i className="uil uil-image img__icon "></i>
                     </label>
                     <MdMood
                       onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-                      className="smile__icon" />
-                    {showEmojiPicker &&
-                      <div className='emoji--container'>
+                      className="smile__icon"
+                    />
+                    {showEmojiPicker && (
+                      <div className="emoji--container">
                         <EmojiPicker
                           onEmojiClick={handleEmojiClick}
                           height="25rem"
                           width="20rem"
-
                         />
                       </div>
-                    }         
-              </div>              
-              </div>
-              {
-                    postValues.mediaURL &&
-                    <div className="post__image__container">
-                        <img src={postValues.mediaURL} alt="post-image"
-                            className="create__post--image "
-                        />
-                        <i
-                            onClick={() => setPostValues({ ...postValues, mediaURL: "" })}
-                            className='uil uil-times close__post--image'></i>
-                    </div>
-                }
-              <div className="post__button">
-              <button
-                type="submit"
-                disabled={!postValues.content.length}
-                className="btn btn-primary" >Post</button>
-              </div>
-            
-
-            </form>
+                    )}
+                  </div>
+                </div>
+                {postValues.mediaURL && (
+                  <div className="post__image__container">
+                    <img
+                      src={postValues.mediaURL}
+                      alt="post-image"
+                      className="create__post--image "
+                    />
+                    <i
+                      onClick={() =>
+                        setPostValues({ ...postValues, mediaURL: "" })
+                      }
+                      className="uil uil-times close__post--image"
+                    ></i>
+                  </div>
+                )}
+                <div className="post__button">
+                  <button
+                    type="submit"
+                    disabled={!postValues.content.length}
+                    className="btn btn-primary"
+                  >
+                    Post
+                  </button>
+                </div>
+              </form>
             </div>
 
             <div className="filter__container">
-              <div
-              
-                className="filter__header">
+              <div className="filter__header">
                 <h3>{filterPost} Posts</h3>
                 <TbAdjustmentsHorizontal
-                 onClick={() => setShowFilter(!showFilter)}
+                  onClick={() => setShowFilter(!showFilter)}
                   className="filter__icon"
                 />
               </div>
-              {
-                showFilter &&
+              {showFilter && (
                 <ul className="filter-lists">
-                  {
-                    sortTypes.map((type) => (
-                      <li
-                        key={type}
-                        className={type === filterPost ? "isActive" : ""}
-                        onClick={() => {
-                          dispatch(setFilterPost(type));
-                          setShowFilter(false)
-                        }}
-                      >{type}</li>
-                    ))
-                  }
+                  {sortTypes.map((type) => (
+                    <li
+                      key={type}
+                      className={type === filterPost ? "isActive" : ""}
+                      onClick={() => {
+                        dispatch(setFilterPost(type));
+                        setShowFilter(false);
+                      }}
+                    >
+                      {type}
+                    </li>
+                  ))}
                 </ul>
-              }
-
+              )}
             </div>
-            <Posts posts={sortedPosts(filterPost, homePosts)} />
+
+            <Posts
+              posts={sortedPosts(filterPost, homePosts)}
+              homePosts={homePosts}
+            />
           </div>
           <div>
             <SuggestedUser />
@@ -199,7 +207,7 @@ const Home = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
