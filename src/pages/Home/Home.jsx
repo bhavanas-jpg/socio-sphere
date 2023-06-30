@@ -12,6 +12,7 @@ import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import SuggestedUser from "../../components/SuggestedUser/SuggestedUser";
+import Theme from "../Theme/Theme";
 
 const Home = () => {
   const { user, token } = useSelector((store) => store.auth);
@@ -143,6 +144,11 @@ const Home = () => {
                     )}
                   </div>
                 </div>
+
+           
+
+
+
                 {postValues.mediaURL && (
                   <div className="post__image__container">
                     <img
@@ -169,7 +175,9 @@ const Home = () => {
                 </div>
               </form>
             </div>
-
+            <div>
+                <Theme />
+              </div>
             <div className="filter__container">
               <div className="filter__header">
                 <h3>{filterPost} Posts</h3>
