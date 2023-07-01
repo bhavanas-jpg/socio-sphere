@@ -68,7 +68,7 @@ const Comments = ({ post,setShowComments }) => {
 
       {sortedComments?.map(({ _id, firstName, lastName,
         text, username, avatarURL, createdAt }) => (
-        <div>
+        <div key={username}>
           <div className="all__comments">
             <div class="profile-picture"><img src={avatarURL} /></div>
             <div>

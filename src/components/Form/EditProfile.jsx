@@ -68,6 +68,7 @@ const EditProfile = ({ currentUser, setShowModal }) => {
                 <div className="avatars">
                     {avatars.map(avatar =>
                         <img
+                           key={avatar}
                             className="profile-picture"
                             src={avatar} alt="avatar_image"
                             onClick={handleImageClick} />

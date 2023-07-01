@@ -15,11 +15,10 @@ const Posts = ({ posts, homePosts }) => {
 
   const displayedPosts = posts.slice(0, page * 5);
 
- 
-
   useEffect(() => {
     dispatch(handleGetAllPosts());
   }, []);
+
 
   const handleObserver = (entries) => {
     const entry = entries[0];

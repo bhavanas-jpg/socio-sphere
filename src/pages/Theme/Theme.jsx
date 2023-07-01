@@ -61,6 +61,7 @@ const Theme = () => {
             <div className="choose-color">
               {colors.map(({ color }) => (
                 <span
+                key={color}
                   className={getColorClassName(color)}
                   onClick={() => {
                     setActiveColor(color);
