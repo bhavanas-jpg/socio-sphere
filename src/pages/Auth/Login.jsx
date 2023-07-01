@@ -20,13 +20,20 @@ const Login = () => {
   const logo = "/assets/logo-image.gif"
 
   const testLogin = {
-    username: "bhavana",
-    password: "bhavanaS123"
+    username: "Afreen",
+    password: "Afreen"
   }
+  const from = location.state?.from || "/";
 
   const handlePasswordToggle =()=>{
     setShowPassword(!showPassword)
   }
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token]);
 
   return (
     <>
@@ -52,8 +59,7 @@ const Login = () => {
                 dispatch(handleLogin({
                   username: formValues.username,
                   password: formValues.password
-                }))
-                navigate(location?.state?.from?.pathname)
+                }))               
               }
               }
               className='auth-form'>
@@ -88,9 +94,18 @@ const Login = () => {
                 type="submit"
               >Log in</button>
               <button
-                type="submit"
+               
                 className='btn btn-primary guest-btn'
-                onClick={() => setFormValues({ username: testLogin.username, password: testLogin.password })}
+                onClick={(e) =>{
+                  e.preventDefault();
+            
+                  setFormValues({ username: testLogin.username, password: testLogin.password })
+                  dispatch(handleLogin({
+                    username: testLogin.username,
+                    password: testLogin.password 
+                  })            
+                  )
+                } }
               >Login As Guest</button>
               <p className="para">Don't have an account?
                 <span

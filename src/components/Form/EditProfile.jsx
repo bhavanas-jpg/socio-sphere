@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RiImageAddFill } from 'react-icons/ri';
 import "./form.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { handleEditUser } from '../../pages/Home/usersSlice';
@@ -38,7 +39,7 @@ const EditProfile = ({ currentUser, setShowModal }) => {
     
         e.preventDefault();
         dispatch(handleEditUser({ userData: values, token }));
-        // dispatch(handleEditUserPost({ userData: values, token }));
+
         setShowModal(false);
     }
 
@@ -61,12 +62,13 @@ const EditProfile = ({ currentUser, setShowModal }) => {
                         type="file"
                         className="add__image"
                     />
-                     <i className="uil uil-image"></i>
+                      <RiImageAddFill className="edit__image_icon"/>
                 </label>
                 <label className="avatar__title">choose any avatar
                 <div className="avatars">
                     {avatars.map(avatar =>
                         <img
+                           key={avatar}
                             className="profile-picture"
                             src={avatar} alt="avatar_image"
                             onClick={handleImageClick} />

@@ -22,7 +22,7 @@ const SignUp = ({ setTogglePage }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { token } = useSelector((store) => store.auth);
-
+  const from = location.state?.from || "/";
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
@@ -38,6 +38,15 @@ const SignUp = ({ setTogglePage }) => {
     setPasswordMatch(e.target.value === formValues.password);
   };
 
+ 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token]);
+
+  
+
   return (
     <>
       <form
@@ -52,7 +61,6 @@ const SignUp = ({ setTogglePage }) => {
               avatarURL: formValues.avatarURL,
             })
           );
-          navigate(location?.state?.from?.pathname);
         }}
         className="auth-form"
       >

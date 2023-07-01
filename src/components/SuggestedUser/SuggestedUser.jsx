@@ -35,7 +35,7 @@ const SuggestedUser = () => {
             {
             suggestedusers.map(user => (
                 <>
-                  <div className="info">
+                  <div className="info" key={user?.username}>
                     <div className="profile-info"
                       onClick={() => {
                         navigate(`/profile/${user?.username}`)
