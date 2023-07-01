@@ -28,17 +28,15 @@ const Header = () => {
                   alt="logo-image" />
                   <h3 className="logo">SocioSphere</h3>
               </div>
-                
-                {/* <div className="search-bar">
-                <i class="uil uil-search"></i>
-                <input type="search" placeholder="Search for creators, inspirations and projects" /> 
-                </div> */}
                 <div className="create">
          <button className="btn btn-primary"
           for="create-post"
           onClick={()=>setShowModal(true)}
           >Create</button>
-         <div className="profile-picture">
+
+         <div className="profile-picture header__profile"
+         onClick={()=>navigate(`/profile/${user?.username}`)}
+         >
             <img src={userImg?.avatarURL} alt="profile-picture" />
          </div>
          </div>

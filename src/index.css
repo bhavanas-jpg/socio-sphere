@@ -128,7 +128,9 @@ img {
 .error__container h3{
   margin: 0.8rem 0;
 }
-
+textarea::placeholder{
+  font-family: "Poppins", sans-serif;
+}
 
 
 

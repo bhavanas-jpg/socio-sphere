@@ -58,3 +58,6 @@ nav .create {
     font-size: 22px;
     color: var(--color-primary)
 }
+.header__profile{
+    cursor: pointer;
+}
