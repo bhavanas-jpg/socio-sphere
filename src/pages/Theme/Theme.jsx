@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import "./theme.css";
 import { handleBgColors, handleColors } from "../../helpers/theme";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft } from "react-icons/fa";
 
 const Theme = () => {
-
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location?.state?.from?.pathname);
 
   const theme = [
     {
@@ -41,54 +39,53 @@ const Theme = () => {
   };
 
   return (
-    <section >
-      
-    <div class="customize-theme">
-    
-    <div class="card">
-       <div className="card__btn">
-        <button
-        className="btn btn-primary"
-        onClick={()=>navigate(location?.state?.from?.pathname)}
-        >
-         <span> <FaArrowLeft /> </span>
-          Go Back</button> 
-       
-      </div>
-        <h2>Customize your view</h2>
-        <p class="text-muted">Manage your color, and background</p>
-        <div className="card-content">
-        <h4>Color</h4>
-      <div className="choose-color">
-        {colors.map(({ color }) => (
-          <span
-            className={getColorClassName(color)}
-            onClick={() => {
-              setActiveColor(color);
-              handleColors(color);
-            }}
-          ></span>
-        ))}
-      </div>
+    <section>
+      <div class="customize-theme">
+        <div class="card">
+          <div className="card__btn">
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate(location?.state?.from?.pathname)}
+            >
+              <span>
+                {" "}
+                <FaArrowLeft />{" "}
+              </span>
+              Go Back
+            </button>
+          </div>
+          <h2>Customize your view</h2>
+          <p class="text-muted">Manage your color, and background</p>
+          <div className="card-content">
+            <h4>Color</h4>
+            <div className="choose-color">
+              {colors.map(({ color }) => (
+                <span
+                  className={getColorClassName(color)}
+                  onClick={() => {
+                    setActiveColor(color);
+                    handleColors(color);
+                  }}
+                ></span>
+              ))}
+            </div>
+          </div>
+          <div className="card-content">
+            <h4>Background</h4>
+            <div className="choose-bg">
+              {bgColors.map(({ bgColor, text }) => (
+                <span
+                  className={getBgColorClassName(bgColor)}
+                  onClick={() => {
+                    handleBgColors(bgColor);
+                    setActiveBgColor(bgColor);
+                  }}
+                ></span>
+              ))}
+            </div>
+          </div>
         </div>
-       <div className="card-content">
-       <h4>Background</h4>
-      <div className="choose-bg">
-        {bgColors.map(({ bgColor, text }) => (
-          <span
-            className={getBgColorClassName(bgColor)}
-            onClick={() => {
-              handleBgColors(bgColor);
-              setActiveBgColor(bgColor);
-            }}
-          ></span>
-        ))}
       </div>
-       </div>
-
-     
-    </div>
-    </div>
     </section>
   );
 };

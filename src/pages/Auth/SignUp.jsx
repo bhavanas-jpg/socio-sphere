@@ -13,7 +13,7 @@ const SignUp = ({ setTogglePage }) => {
     password: "",
     confirmPassword: "",
     avatarURL:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspzDIplyS6mahlqwPOpmblamV2hqb8cRc4ZNzfVlqGA&usqp=CAU&ec=48600113",
+      "https://images.pexels.com/lib/avatars/purple.png?w=50&h=50&fit=crop",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
