@@ -1,0 +1,50 @@
+.main .container .left {
+    height: max-content;
+    position: sticky;
+    top: var(--sticky-top-left);
+}
+.sidebar {
+    margin-top: 1rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+}
+.sidebar .menu-item{
+    display: flex;
+    align-items: center;
+  
+    height: 4rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    position: relative; 
+}
+ .sidebar .menu-item:hover{
+    background: var(--color-light);
+}
+ .sidebar i{
+    font-size: 1.4rem;
+    color: var(--color-gray);
+    margin-left: 2rem;
+    margin-right: 1.5rem;
+}
+.sidebar .menu-title{
+    color: var(--color-dark);
+    font-size: 1.05rem ; 
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+.menu-title.active,
+.menu-title.active i{
+    color: var(--color-primary);
+   
+}
+.menu-title.active{
+    font-size: 1.1rem;
+}
+
+/* .left .sidebar .active{
+    background: var(--color-light);
+}
+.left .sidebar .active i,
+.left .sidebar .active h3{
+    color: var(--color-primary)
+} */

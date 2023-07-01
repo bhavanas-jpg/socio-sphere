@@ -1,0 +1,122 @@
+.edit-form{
+    display: flex;
+    flex-direction: column;
+}
+.edit-form input{
+    width: 100%;
+    border: 1px solid var(--color-gray);
+    padding: 0.5rem;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.user__info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+textarea{
+    width: 100%;   
+    outline: none;
+    resize: none;
+    padding: 0.5rem;
+    border: 1px solid var(--color-gray);
+    border-radius: 7px;
+}
+.edit__post--image{
+    width: 100px;
+    height: 100px;
+    opacity: 0.7;
+}
+.add__image{
+    width: 0 !important;
+    position: relative;
+    opacity: 0;
+    bottom: 2rem;
+    left: 1rem;
+	padding: 0 !important;
+    margin: 0 !important;
+}
+.uil.uil-image{
+    position: absolute;
+    left: -18.5rem;
+    top: 4rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.edit__image{
+    opacity: 0.7;
+    
+}
+.edit__post{
+    left: 3.8rem !important;;
+    top: 18rem !important;;
+
+}
+.avatars{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2rem;
+}
+.avatar-container{
+    display: flex;
+}
+.avatar__title{
+    margin-left: 1rem;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.avatars img{
+    cursor: pointer;
+}
+.btn__container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+.modal-body.edit-post{
+    bottom: -11rem !important;
+}
+.post__username{
+    font-size: 0.8rem;
+    line-height: 0.9rem;
+}
+.mt-7{
+    margin-top: 7.2rem;
+}
+.smiley__icon{
+    position: absolute;
+    top: 8.4rem;
+    font-size: 1.3rem;
+    right: 3rem;
+    cursor: pointer;
+}
+.emoji__container{
+    position: absolute;
+}
+.post__btn:disabled{
+    opacity: 0.8;
+    cursor: none;
+}
+.close__image{
+    position: absolute;
+    top: 0.2rem;
+    left: 5rem;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+.post__image__container{
+    position: relative;
+}
+.post__image__container .uil.uil-times{
+font-weight: bold;
+cursor: pointer;
+}
+.post__image__container .uil.uil-times:hover{
+    background-color: var(--color-gray);
+}

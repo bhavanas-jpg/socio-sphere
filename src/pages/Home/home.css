@@ -1,0 +1,96 @@
+.filter-lists .isActive{
+    color: #000;
+    font-weight: bold;
+    transition:  all 300ms ease;
+}
+.create__post{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.create__post--icons{
+    position: relative;
+}
+
+
+.filter__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
+}
+.filter__container{
+    position: relative;
+}
+.filter__container h3{
+    color: var(--color-gray);
+}
+.filter-lists{
+    background-color: #fff;
+    padding:  0;
+    position: absolute;
+    right: 0;
+    top: 2.5rem;
+    border-radius: 8px; 
+    box-shadow: -1px 0 7px -1px #282626;
+    z-index: 1;
+}
+.filter-lists li{
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.3rem 1.1rem;
+}
+.filter-lists li:hover{
+    background-color:  #e6e4e4;
+    border-radius: 8px; 
+}
+.filter__icon{
+    cursor: pointer;
+}
+.post__input{
+    border: none;
+    outline: none;
+}
+.smile__icon{
+    position: absolute;
+    top: 4.4rem;
+    font-size: 1.3rem;
+    right: 15rem;
+    cursor: pointer;
+}
+.emoji--container{
+    position: absolute;
+    right: 9rem;
+    z-index: 10;
+    top: 6rem;
+}
+.create__post--image{
+    width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    margin-top: 4rem;
+}
+.close__post--image{
+    position: absolute;
+    top: 0.2rem;
+    border-radius: 50%;
+    border: 1px solid red;
+    right: 1.5rem;
+  
+}
+.create__post--container{
+    margin-top: 1rem;
+    background: var(--color-white);
+    padding: 0.4rem var(--card-padding);
+    border-radius: 0.6rem;
+}
+.post__button{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.6rem;
+}
+.post__button button:disabled{
+    opacity: 0.7;
+    cursor: none;
+}

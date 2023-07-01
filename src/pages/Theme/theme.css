@@ -1,0 +1,125 @@
+.customize-theme{
+    background: rgba(255, 255, 255, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    
+    place-items: center;
+    font-size: 0.9rem;
+    
+}
+.customize-theme .card{
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.customize-theme .card .card__btn{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0.5rem 0;
+}
+.customize-theme .card .card__btn span{
+    margin-right: 0.6rem;
+}
+.customize-theme .choose-color{
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+.customize-theme .choose-color span{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%; 
+}
+.customize-theme .choose-color span.active{
+    border: 5px solid white;
+}
+.choose-color span:nth-child(1){
+    background: hsl(252, 75%, 60%);
+}
+ .choose-color span:nth-child(2){
+    background: hsl(52, 75%, 60%);
+}
+.choose-color span:nth-child(3){
+    background: hsl(352, 75%, 60%);
+}
+ .choose-color span:nth-child(4){
+    background: hsl(152, 75%, 60%);
+}
+ .choose-color span:nth-child(5){
+    background: hsl(202, 75%, 60%);
+}
+/***background theme:css**/
+.choose-bg{
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+.choose-bg > div{
+    padding: var(--card-padding);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+.choose-bg span:nth-child(1){
+    background: #fff;
+    color: #000;
+}
+.choose-bg span:nth-child(2){
+    background: hsl(252, 30%, 17%);
+    color: #fff;
+}
+.choose-bg span:nth-child(3){
+    background: hsl(252, 30%, 10%);
+    color: #fff;
+}
+.choose-bg span{
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-gray);
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.choose-bg span.active {
+    border: 5px solid white;
+}
+.card-content{
+    margin: 1rem 0;
+}
+.card-content h4{
+    margin: 0.5rem 0;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 98;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}

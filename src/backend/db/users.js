@@ -56,7 +56,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "Software Developer",
+    bio: "Passionate dancer sharing artistic journey💃",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /**************2nd user************* */
@@ -109,7 +109,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "Traveller",
+    bio: "Traveller | Exploring the world, one adventure.",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /*********3rd user ***********/
@@ -214,7 +214,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "MakeUp Artist",
+    bio: "Software Developer",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /*******5th user **************/
@@ -320,7 +320,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "Software Developer",
+    bio: "Food Blogger",
     website: "https://bhavanas-portfolio.netlify.app/"
   },
   /*******7th user **************/
@@ -372,7 +372,7 @@ export const users = [
       }
     ],
     bookmarks: [],
-    bio: "Photographer",
+    bio: "Exploring the world, one adventure.",
     website: "https://bhavanas-portfolio.netlify.app/"
   }
 ];

@@ -3,13 +3,142 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 1rem;
+    border-radius: 15px;
+   
+}
+.auth-form h1{
+    display: flex;
+    gap: 1rem;
+    color: #fff;
+    margin: 1rem 0;
+ 
 }
 .auth-form input{
     width: 320px;
     margin-bottom: 1rem;
-    padding: 0.5rem;
+    padding: 1rem;
     outline: none;
+    background: transparent;
+    border-bottom: 1.2px solid #fff;
+    color:#fff;
+    font-weight: 700;
+    font-size: 17px;
+}
+.auth-form input[type="text"]::placeholder,
+.auth-form input[type="password"]::placeholder{
+    color:#ccc;
+    font-weight: 700;
+    font-size: 17px;
+    font-family: "Poppins", sans-serif;
 }
 .auth-form button{
     margin-bottom: 1.4rem;
+    width: 100%;
+    border-radius: 20px !important;
+    letter-spacing: 0.8px;
+}
+.login-btn{
+    margin-top: 1.5rem;
+    background: linear-gradient(338deg, #e26e6e 0%, #7c57d3 71%);
+}
+.guest-btn{
+background: #FFFFFF;
+background: linear-gradient(135deg, #a9a7a7, #7E7E7E);
+}
+.login__container{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-around;
+ 
+}
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  #video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+  }
+
+  /* Additional styles for content on top of the video */
+  .content {
+    flex: 60%;
+    /* z-index: 1; */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    top: 7rem;
+ 
+  }
+  .form__section{
+    flex: 20%;
+    position: relative;
+    top: 7rem;
+  }
+  .heading{
+    font-size: 5.6rem;
+    background: linear-gradient(338deg, #e26e6e 0%, #7c57d3 71%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  text-align: left;
+  line-height: 7rem;
+  }
+  .tagline{
+    font-size: 1.4rem;
+    text-align: left;
+    /* width: 300px; */
+    font-weight: 700;
+	 line-height: 2rem;
+    margin-top: 1.8rem;
+    letter-spacing: 0.6px;
+  }
+  .typed-out{
+    overflow: hidden;
+    white-space: nowrap;
+    animation: 
+    typing 5s steps(100, end) forwards;
+    /* font-size: 1.6rem; */
+    width: 0;
+  }
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+.para{
+  color: #ccc;
+}
+.link__text{
+  margin-left: 1rem;
+  color: #fff;
+  font-weight: bold;
+  cursor:pointer;
+}
+.password__icon {
+  color: var(--color-white);
+}
+.password__input {
+  position: relative;
+}
+.password__input span {
+  position: absolute;
+  right: 1rem;
+  top: 0.9rem;
+  cursor: pointer;
+}
+.password-error-msg {
+  color: rgb(228, 56, 56);
+  font-size: 14px;
 }
