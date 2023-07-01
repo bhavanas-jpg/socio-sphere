@@ -54,3 +54,7 @@ nav .create {
    height: 38px;
    border-radius: 50%;
 }
+.logo{
+    font-size: 22px;
+    color: var(--color-primary)
+}

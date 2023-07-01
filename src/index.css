@@ -72,7 +72,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+.txt-center{
+  text-align: center;
+}
 
 /** GENERAL STYLES **/
 .container {
@@ -114,6 +116,26 @@ img {
 .discard-btn {
   color: rgb(213, 32, 32);
 }
+.error_image{
+  height: 550px;
+  margin: 1.4rem 0;
+  border-radius: var(--border-radius);
+}
+.error__container{
+  width: 80%;
+  margin: 0 auto;
+}
+.error__container h3{
+  margin: 0.8rem 0;
+}
+
+
+
+
+
+
+
+
 @media screen and (max-width: 1200px) {
   .container {
     width: 96%;
@@ -135,6 +157,13 @@ img {
   .main .post-container {
     grid-template-columns: 0 98% 0rem;
     gap: 0;
+  }
+  .error_image{
+    height: 350px;
+  }
+  .customize-theme .card {
+    padding: 1rem !important;
+    width: 80% !important;
   }
 }
 @media screen and (max-width: 992px) {

@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import Error from '../pages/Error';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import PostDetail from '../pages/PostDetail/PostDetail';
+import Theme from '../pages/Theme/Theme';
 
 
 const NavRoutes = () => {
@@ -48,7 +49,14 @@ const NavRoutes = () => {
           <PostDetail />
         </PrivateRoute>
       }/>
+      <Route path="/theme" element={
+         <PrivateRoute>
+          <Theme />        
+         </PrivateRoute>
+      } />
       <Route path="*" element={<Error />} />
+      <Route path="/login" element={<Login  />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   )
 }

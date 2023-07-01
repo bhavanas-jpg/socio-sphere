@@ -1,8 +1,11 @@
-import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import "./navbar.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '../../pages/Auth/authSlice';
+
+import  Theme  from '../../pages/Theme/Theme';
+import Modal from '../Modal/Modal';
 
 
 
@@ -10,6 +13,8 @@ const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user, token } = useSelector(store => store.auth);
+    const location = useLocation();
+    const [showModal ,setShowModal] = useState(false);
 
     return (
         <section className="left">
@@ -40,6 +45,14 @@ const Navbar = () => {
                             <span> Profile</span> 
                            </NavLink>
                     </li>
+
+                    <li className="menu-item">
+                        <NavLink to="/theme" state={{from: location}}  className="menu-title" >
+                    <i class="uil uil-palette"></i>
+                    <span>Theme</span>
+                    </NavLink>
+                    </li>
+
                     <li className="menu-item"
                         onClick={() => {
                             dispatch(handleLogout());
@@ -51,7 +64,10 @@ const Navbar = () => {
                             </NavLink>
                     </li>
                 </ul>
+               
             </aside>
+{/*            
+            {showModal &&  <Theme /> } */}
         </section>
     )
 }

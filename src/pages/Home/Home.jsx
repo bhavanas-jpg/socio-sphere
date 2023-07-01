@@ -175,9 +175,6 @@ const Home = () => {
                 </div>
               </form>
             </div>
-            <div>
-                <Theme />
-              </div>
             <div className="filter__container">
               <div className="filter__header">
                 <h3>{filterPost} Posts</h3>
