@@ -69,7 +69,7 @@
  }
 
  .post__action--btns {
-     background-color: #fff;
+     background-color: var(--color-white);
      position: absolute;
      right: 0;
      cursor: pointer;
@@ -82,7 +82,7 @@
     padding: 0.5rem 0.8rem;
  }
  .post__action--btns li:hover{
-    background-color:  #e6e4e4;
+    background-color:   hsla(251, 12%, 57%, 0.4);
     border-radius: 8px;
  }
 

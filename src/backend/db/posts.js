@@ -552,7 +552,7 @@ export const posts = [
       "https://res.cloudinary.com/drjisfpis/image/upload/v1686544474/socioSphere/profile-12_ge7xeq.jpg",
     createdAt: new Date("Mar 18 2021 12:09:23"),
     updatedAt: formatDate(),
-    hashtags: "#StaySafe#MaskUp#SocialDistance#HandHygiene#StayHealthy",
+    hashtags: "#WinterWonderland#SnowyDelights#ChillyBliss#SnowflakeMagic",
   },
 
   /***7th post */

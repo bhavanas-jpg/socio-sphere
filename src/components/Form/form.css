@@ -24,6 +24,8 @@ textarea{
     padding: 0.5rem;
     border: 1px solid var(--color-gray);
     border-radius: 7px;
+    background: var(--color-white);
+    color: var(--color-dark);
 }
 .edit__post--image{
     width: 100px;
@@ -98,6 +100,7 @@ textarea{
 }
 .emoji__container{
     position: absolute;
+    z-index: 1;
 }
 .post__btn:disabled{
     opacity: 0.8;
@@ -119,4 +122,10 @@ cursor: pointer;
 }
 .post__image__container .uil.uil-times:hover{
     background-color: var(--color-gray);
+}
+.edit__image_icon{
+    position: absolute;
+    /* bottom: 1rem; */
+    top: 5rem;
+    left: 3rem;
 }

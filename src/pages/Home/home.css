@@ -1,5 +1,5 @@
 .filter-lists .isActive{
-    color: #000;
+    color: var(--color-primary);
     font-weight: bold;
     transition:  all 300ms ease;
 }
@@ -27,7 +27,7 @@
     color: var(--color-gray);
 }
 .filter-lists{
-    background-color: #fff;
+    background-color: var(--color-white);
     padding:  0;
     position: absolute;
     right: 0;
@@ -40,9 +40,10 @@
     font-size: 0.9rem;
     cursor: pointer;
     padding: 0.3rem 1.1rem;
+    
 }
 .filter-lists li:hover{
-    background-color:  #e6e4e4;
+    background-color: hsla(251, 12%, 57%, 0.4);
     border-radius: 8px; 
 }
 .filter__icon{
