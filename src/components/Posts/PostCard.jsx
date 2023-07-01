@@ -26,6 +26,8 @@ const PostCard = ({ post, showComment }) => {
   const dispatch = useDispatch();
   const userImg = allUsers?.find((user) => user?.username === post?.username);
   const isEdit = true;
+  
+  const commentArr = post?.comments ?? [];
 
   return (
     <div className="feed" key={post?._id}>
@@ -91,15 +93,6 @@ const PostCard = ({ post, showComment }) => {
         ) : (
           <img src={post?.mediaURL} alt={post?.mediaURL} />
         )}
-
-        {/* {post?.mediaUrl && post?.type !== "image" && (
-            <video controls autoPlay muted loop>
-              <source src={post?.mediaUrl} />
-            </video>
-          )}
-          {post?.mediaUrl && post?.type === "image" && (
-            <img src={post?.mediaUrl} alt="" />
-          )} */}
       </div>
       <div className="action-buttons">
         <div className="interaction-buttons">
@@ -201,8 +194,13 @@ const PostCard = ({ post, showComment }) => {
         </p>
         <p className="hash-tag">{post?.hashtags}</p>
       </div>
+      <div className="comment_count">
+        <p 
+        onClick={()=>   navigate(`/post/${post?.id}`)}
+        className="text-muted">View all {commentArr.length} comments</p>
+      </div>
       {showComment && <Comments post={post} />}
-      {/* <Comments post={post} /> */}
+   
 
       {showModal && (
         <Modal

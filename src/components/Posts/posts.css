@@ -114,3 +114,7 @@
  .caption p{
     max-width: 720px; 
  }
+ .comment_count{
+    cursor: pointer;
+    
+ }
