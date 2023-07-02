@@ -10,9 +10,9 @@ export const posts = [
   /**wyatt post 2 */
   {
     _id: uuid(),
-    content: "Delicious homemade pizza baking",
+    content: "Delicious homemade pizza ",
     mediaURL:
-      "https://res.cloudinary.com/drjisfpis/video/upload/v1687792905/pizza_bcjq9h.mp4",
+      "https://res.cloudinary.com/drjisfpis/video/upload/v1688284109/pizza_wtq74u.mp4",
     likes: {
       likeCount: 4,
       likedBy: [
@@ -633,9 +633,9 @@ export const posts = [
   /**wyatt post1 */
   {
     _id: uuid(),
-    content: "Delicious fried treats on-the-go!",
+    content: "Delicious  treats on-the-go!",
     mediaURL:
-      "https://res.cloudinary.com/drjisfpis/video/upload/v1688194241/street-food-1_dr1mgx.mp4",
+      "https://res.cloudinary.com/drjisfpis/video/upload/v1688284101/sweet_xt5ueo.mp4",
     likes: {
       likeCount: 3,
       likedBy: [

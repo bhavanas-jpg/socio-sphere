@@ -132,15 +132,9 @@ textarea::placeholder{
   font-family: "Poppins", sans-serif;
 }
 
-
-
-
-
-
-
 @media screen and (max-width: 1200px) {
   .container {
-    width: 96%;
+    width: 97%;
   }
   .main .container {
     grid-template-columns: 5rem auto 30vw;
@@ -157,16 +151,21 @@ textarea::placeholder{
     justify-content: center;
   }
   .main .post-container {
-    grid-template-columns: 0 98% 0rem;
+    grid-template-columns: 0 100% 0rem;
     gap: 0;
   }
   .error_image{
     height: 350px;
   }
+
   .customize-theme .card {
     padding: 1rem !important;
     width: 80% !important;
   }
+  .postdetail__sec {
+    width: 100% !important;
+  }
+ 
 }
 @media screen and (max-width: 992px) {
   .main .container {
@@ -209,7 +208,7 @@ textarea::placeholder{
   }
   .main .container .middle {
     grid-column: 1/4;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
   }
   .main .container .right {
@@ -271,5 +270,11 @@ textarea::placeholder{
   }
   .auth-form input {
     width: 289px !important;
+  }
+  .logo {
+    font-size: 16px !important;
+  }
+  .logo__container {
+    gap: 0.2rem !important;
   }
 }

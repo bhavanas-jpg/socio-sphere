@@ -33,7 +33,11 @@ const PostCard = ({ post, showComment }) => {
     <div className="feed" key={post?._id}>
       <div className="head">
         <div className="user">
-          <div className="profile-picture">
+          <div className="profile-picture" 
+          onClick={() => {
+            navigate(`/profile/${post?.username}`)
+          }}
+          >
             <img src={userImg?.avatarURL} alt={userImg?.avatarURL} />
           </div>
           <div className="info">
