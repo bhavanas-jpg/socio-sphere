@@ -232,6 +232,10 @@ textarea::placeholder {
     max-width: 300px !important;
     word-wrap: break-word;
   }
+  .liked-by p  {
+    max-width: 222px !important;
+    word-wrap: break-word;
+  }
   .modal-close {
     bottom: 15rem;
     left: 17rem;

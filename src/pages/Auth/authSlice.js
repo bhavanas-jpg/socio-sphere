@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AUTHKEY } from "../../utils/constants";
 import { loginService, signupService } from "../../services/auth";
 import { updateUser } from "../../services/users";
+import { toast } from "react-hot-toast";
 
 
 
@@ -57,8 +58,7 @@ const authSlice = createSlice({
         handleLogout: (state) => {
             localStorage.removeItem(AUTHKEY);
             state.user = null;
-            state.token = null;
-
+            state.token = null;         
         }
     },
     extraReducers: (builder) => {
@@ -75,6 +75,7 @@ const authSlice = createSlice({
                     token: action.payload.encodedToken,
                 })
             );
+            toast.success(`Welcome ${action.payload.foundUser.firstName}`)
         });
         builder.addCase(handleLogin.rejected, (state, action) => {
             state.isLoading = false;
@@ -92,7 +93,8 @@ const authSlice = createSlice({
                     user: action.payload.createdUser,
                     token: action.payload.encodedToken
                 })
-            )
+            );
+            toast.success("Signup successfully!")
         });
         builder.addCase(handleSignup.rejected, (state, action) => {
             state.isLoading = false;
