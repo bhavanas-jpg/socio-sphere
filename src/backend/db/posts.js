@@ -12,7 +12,7 @@ export const posts = [
     _id: uuid(),
     content: "Delicious homemade pizza ",
     mediaURL:
-      "https://res.cloudinary.com/drjisfpis/video/upload/v1688284109/pizza_wtq74u.mp4",
+      "https://res.cloudinary.com/drjisfpis/image/upload/v1688295952/pizza_d9i4sb.jpg",
     likes: {
       likeCount: 4,
       likedBy: [
@@ -348,9 +348,9 @@ export const posts = [
 
   {
     _id: uuid(),
-    content: "Snacks, giggles, and endless fun!",
+    content: "Joyful underprivileged kids savoring ice-cream.",
     mediaURL:
-      "https://res.cloudinary.com/drjisfpis/video/upload/v1688194229/children_zo0ufj.mp4",
+      "https://res.cloudinary.com/drjisfpis/image/upload/v1686813962/socioSphere/photographer-1_ukgrmv.jpg",
     likes: {
       likeCount: 3,
       likedBy: [
@@ -399,7 +399,7 @@ export const posts = [
         username: "SophiaA",
         avatarURL:
           "https://res.cloudinary.com/drjisfpis/image/upload/v1686544474/socioSphere/profile-12_ge7xeq.jpg",
-        text: "Bringing joy through snacks.",
+        text: "Bringing joy through ice-cream.",
         createdAt: new Date("January 02 2023 09:09:09"),
       },
     ],
@@ -633,9 +633,9 @@ export const posts = [
   /**wyatt post1 */
   {
     _id: uuid(),
-    content: "Delicious  treats on-the-go!",
+    content: "Delicious dessert on-the-go!",
     mediaURL:
-      "https://res.cloudinary.com/drjisfpis/video/upload/v1688284101/sweet_xt5ueo.mp4",
+      "https://res.cloudinary.com/drjisfpis/image/upload/v1688296559/sweet_ochroo.jpg",
     likes: {
       likeCount: 3,
       likedBy: [

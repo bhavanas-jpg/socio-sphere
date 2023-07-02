@@ -14,6 +14,7 @@ import Modal from "../Modal/Modal";
 import EditPost from "../Form/EditPost";
 import { useNavigate } from "react-router-dom";
 import Comments from "../Comments/Comments";
+import { toast } from "react-hot-toast";
 
 const PostCard = ({ post, showComment }) => {
   const [showActionBtns, setShowActionBtns] = useState(false);
@@ -28,6 +29,13 @@ const PostCard = ({ post, showComment }) => {
   const isEdit = true;
   
   const commentArr = post?.comments ?? [];
+
+  const copyHandler = (link) => {
+    navigator.clipboard.writeText(link);
+    toast.success("Link successfully copied");
+  };
+  
+
 
   return (
     <div className="feed" key={post?._id}>
@@ -134,7 +142,9 @@ const PostCard = ({ post, showComment }) => {
             ></i>
           </span>
           <span>
-            <i class="uil uil-share-alt"></i>
+            <i 
+             onClick={()=> copyHandler(`https://sociosphere-v1.netlify.app/post/${post?.id}`)}
+            class="uil uil-share-alt"></i>
           </span>
         </div>
         <div className="bookmark">
@@ -166,10 +176,14 @@ const PostCard = ({ post, showComment }) => {
         {post?.likes?.likedBy?.length ? (
           <>
             {post.likes.likedBy.slice(1).map((like, index) => (
+              <div className="liked__users">
               <span key={index}>
                 <img src={like?.avatarURL} alt={like?.avatarURL} />
               </span>
+              </div>
+              
             ))}
+            <div>
             <p>
               Liked by
               {post.likes.likedBy.length === 1 ? (
@@ -183,6 +197,7 @@ const PostCard = ({ post, showComment }) => {
                 </>
               )}
             </p>
+            </div>
           </>
         ) : null}
       </div>

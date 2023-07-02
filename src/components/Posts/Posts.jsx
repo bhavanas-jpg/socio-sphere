@@ -10,7 +10,7 @@ const Posts = ({ posts, homePosts }) => {
 
 
   const dispatch = useDispatch();
-  const { isPostLoading, page } = useSelector((store) => store.posts);
+  const { isPostLoading, page,isLoading } = useSelector((store) => store.posts);
   const bottomRef = useRef(null);
 
   const displayedPosts = posts.slice(0, page * 5);
@@ -65,27 +65,35 @@ const Posts = ({ posts, homePosts }) => {
 
   return (
     <section>
+  
       <div className="feeds">
-        {displayedPosts?.map((post, index) => {
-          return (
-            <React.Fragment key={post._id}>
-              <PostCard post={post} />
-              {index === displayedPosts?.length - 1 && (
-                <div
-                  ref={bottomRef}
-                  style={{ height: 0, paddingBottom: "3.5rem" }}
-                ></div>
-              )}
-
-            {isPostLoading && <Loader />}
-            </React.Fragment>
-          );
-        })}
+        {
+          
+          <>
+          {displayedPosts?.map((post, index) => {
+            return (
+              <React.Fragment key={post._id}>
+                <PostCard post={post} />
+                {index === displayedPosts?.length - 1 && (
+                  <div
+                    ref={bottomRef}
+                    style={{ height: 0, paddingBottom: "3.5rem" }}
+                  ></div>
+                )}
+  
+              {isPostLoading && <Loader />}
+              </React.Fragment>
+            );
+          })}
+          </>
+        }
+       
      {
       displayedPosts?.length !== homePosts?.length ||
       isPostLoading && <Loader />
      }
       </div>
+      
     </section>
   );
 };

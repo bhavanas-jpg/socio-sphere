@@ -23,10 +23,6 @@ const Profile = () => {
   const currentUser = allUsers.find((user) => user.username === username);
   const userPosts = allPosts.filter((post) => post.username === username);
 
-
-
-
-
   return (
     <>
     <Header />
@@ -69,8 +65,7 @@ const Profile = () => {
             <b>{currentUser?.following.length} </b>
               <span className="text-muted">Following</span>
             </p>
-            {" "}
-           
+            {" "}         
             </p>
             </div>
             <div>

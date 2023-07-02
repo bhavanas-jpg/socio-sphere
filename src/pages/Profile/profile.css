@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 .uil.uil-edit{
 cursor: pointer;
@@ -28,9 +29,11 @@ font-size: 1.3rem;
     margin-top: 0.6rem;
     display: flex;
     justify-content: space-around;
+   
 }
 .follow__sec span{
     margin-left: 0.2rem;
+    font-size: 14px;
 }
 .follow__sec p{
     margin-right: 0.6rem;
@@ -39,4 +42,7 @@ font-size: 1.3rem;
 display: flex;
 gap: 1rem ;
 align-items: center;
+}
+.follow-btn{
+    margin-top: 0.6rem;
 }
