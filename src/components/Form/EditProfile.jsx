@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleEditUser } from "../../pages/Home/usersSlice";
 
 const EditProfile = ({ currentUser, setShowModal }) => {
-  const avtr1 = "https://res.cloudinary.com/drjisfpis/image/upload/v1688233249/avatar-1_krzuam.jpg";
-  const avtr2 = "https://res.cloudinary.com/drjisfpis/image/upload/v1688233250/avatar-2_ncypjg.jpg";
-  const avtr3 = "https://res.cloudinary.com/drjisfpis/image/upload/v1688233249/avatar-3_n1u7yb.jpg";
-  const avtr4 = "https://res.cloudinary.com/drjisfpis/image/upload/v1688233250/avatar-5_olrm7s.webp";
+  const avtr1 = "https://res.cloudinary.com/drjisfpis/image/upload/w_400,f_auto,q_auto/v1688233249/avatar-1_krzuam.jpg";
+  const avtr2 = "https://res.cloudinary.com/drjisfpis/image/upload/w_400,f_auto,q_auto/v1688233250/avatar-2_ncypjg.jpg";
+  const avtr3 = "https://res.cloudinary.com/drjisfpis/image/upload/w_400,f_auto,q_auto/v1688233249/avatar-3_n1u7yb.jpg";
+  const avtr4 = "https://res.cloudinary.com/drjisfpis/image/upload/w_400,f_auto,q_auto/v1688233250/avatar-5_olrm7s.webp";
 
   const avatars = [avtr1, avtr2, avtr3, avtr4];
   const { user, token } = useSelector((store) => store.auth);
