@@ -224,6 +224,9 @@ textarea::placeholder {
   nav .create {
     gap: 0.6rem !important;
   }
+  .para{
+    font-size: 13px !important;
+  }
   .caption p,
   .hash-tag {
     max-width: 300px !important;
@@ -279,8 +282,12 @@ textarea::placeholder {
     flex-direction: column;
   }
   .auth-form input {
-    width: 289px !important;
+    width: 270px !important;
   }
+  .auth-form input[type="text"]::placeholder,
+.auth-form input[type="password"]::placeholder{
+    font-size: 15px !important;
+}
   .logo {
     font-size: 16px !important;
   }
