@@ -13,10 +13,11 @@ import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import SuggestedUser from "../../components/SuggestedUser/SuggestedUser";
 import Theme from "../Theme/Theme";
+import Loader from "../../components/Loader/Loader";
 
 const Home = () => {
   const { user, token } = useSelector((store) => store.auth);
-  const { allPosts, filterPost } = useSelector(
+  const { allPosts, filterPost, isLoading } = useSelector(
     (store) => store.posts
   );
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -200,11 +201,12 @@ const Home = () => {
                 </ul>
               )}
             </div>
-
+          
             <Posts
               posts={sortedPosts(filterPost, homePosts)}
               homePosts={homePosts}
             />
+                    
           </div>
           <div>
             <SuggestedUser />
