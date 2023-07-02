@@ -23,6 +23,8 @@ const Profile = () => {
   const currentUser = allUsers.find((user) => user.username === username);
   const userPosts = allPosts.filter((post) => post.username === username);
 
+  const sortedUserPosts = userPosts.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   return (
     <>
     <Header />
@@ -88,7 +90,7 @@ const Profile = () => {
         </section>
 
 
-        <Posts posts={userPosts} homePosts={userPosts}/>
+        <Posts posts={sortedUserPosts} homePosts={sortedUserPosts}/>
       </div>
       <div>
     <SuggestedUser />

@@ -145,11 +145,6 @@ const Home = () => {
                     )}
                   </div>
                 </div>
-
-           
-
-
-
                 {postValues.mediaURL && (
                   <div className="post__image__container">
                     <img
