@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# SocioSphere
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[SocioSphere](https://sociosphere-v1.netlify.app/) - A social media website where you can connect with your friends.
 
-## Available Scripts
 
-In the project directory, you can run:
+## How to install and run locally?
 
-### `npm start`
+```
+$ git clone https://github.com/bhavanas-jpg/socio-sphere.git
+$ cd socio-sphere
+$ npm install
+$ npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pages and Features -
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### [Home Page](https://sociosphere-v1.netlify.app/)
 
-### `npm test`
+- Posts of users you follow
+- User Suggestions
+  - Follow users
+- Like/ Unlike a Post
+- Add/ Remove bookmark on a post
+- Comment on a post
+- Create/ Edit post with Image and Emoji Upload
+- Delete Own posts
+- Share post link
+- Sort posts based on Latest/ Trending / Oldest.
+- Infinite Scroll
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### [Explore Page](https://sociosphere-v1.netlify.app/explore)
 
-### `npm run build`
+- All Posts from latest to oldest
+- Infinite Scoll
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### [Bookmarks Page](https://sociosphere-v1.netlify.app/bookmark)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- User Bookmarked posts list
+  - Remove from Bookmarks
+  - Like / Comment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### [Profile Page](https://sociosphere-v1.netlify.app/profile/Afreen)
 
-### `npm run eject`
+- Edit Own Profile with Image Upload
+- Can choose from Avatar options also
+- Follow/ Unfollow users.
+- List of all posts posted by user
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### [Single Post Page](https://sociosphere-v1.netlify.app/post/11)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Like/Unlike post
+- Add/ Remove bookmark on a post
+- Comment on a post
+- Share post link
+- Edit/ Delete posts
+- Liked By Users List
+- Comments list
+- Edit/Delete own comments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### [Other Features](https://buzzbird-v1.netlify.app)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Authentication
+  - Login
+  - Signup
+- 404 Error Page
+- Theme
+- Toasts
+- Loaders
+- Responsive
 
-## Learn More
+## Built with -
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React JS
+- Redux
+- React Router v6
+- Vanilla CSS
+- mockBee for backend
+- React Icons
+- React Hot Toast
