@@ -1,7 +1,10 @@
 # SocioSphere
 
-[SocioSphere](https://sociosphere-v1.netlify.app/) - A social media website where you can connect with your friends.
+[SocioSphere](https://sociosphere-v1.netlify.app/) : Connect, share, and engage in a vibrant social network.
 
+<div align="center">
+  <img src="https://res.cloudinary.com/drjisfpis/image/upload/v1688354920/cover_mnf4a7.png" height="auto" width="100%" alt="logo"/>
+</div>
 
 ## How to install and run locally?
 
@@ -57,7 +60,7 @@ $ npm start
 - Comments list
 - Edit/Delete own comments
 
-### [Other Features](https://buzzbird-v1.netlify.app)
+### [Other Features](https://sociosphere-v1.netlify.app/)
 
 - Authentication
   - Login
@@ -77,3 +80,20 @@ $ npm start
 - mockBee for backend
 - React Icons
 - React Hot Toast
+
+## **Contributing -**
+<p>Contributions are welcome! If you'd like to contribute to the project, please follow these steps:</p>
+<ol>
+<li>Fork the repository.</li>
+<li>Create a new branch for your feature/bug fix: git checkout -b feature/your-feature.</li>
+<li>Make your changes and commit them: git commit -m "Add your feature".</li>
+<li>Push to the branch: git push origin feature/your-feature.</li>
+<li>Submit a pull request.</li>
+</ol>
+
+<hr/>
+
+## **Contact -**
+
+For any inquiries or feedback, please email at s148bhavana@gmail.com
+<hr/>
